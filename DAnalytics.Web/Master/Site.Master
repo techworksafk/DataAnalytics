@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="DAnalytics.Web.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title>Data Analytics</title>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="../Jquery/jquery_ui_datepicker/timepicker_plug/css/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="../Jquery/jquery_ui_datepicker/smothness/jquery_ui_datepicker.css" />
+
+    <script language="javascript" type="text/javascript" src="../Jquery/jquery-1.4.1.min.js"></script>
+
+    <script language="javascript" type="text/javascript" src="../Jquery/popup.js"></script>
+
+    <script src="../Jquery/jquery_ui_datepicker/jquery_ui_datepicker.js" type="text/javascript"></script>
+
+    <script src="../Jquery/jquery_ui_datepicker/i18n/ui.datepicker-de.js" type="text/javascript"></script>
+
+    <script src="../Jquery/jquery_ui_datepicker/timepicker_plug/timepicker.js" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript" src="../Scripts/General.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../pro_dropdown_2/pro_dropdown_2.css" />
+
+    <script src="../pro_dropdown_2/stuHover.js" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $.ajax({
+                cache: false,
+                async: false,
+                url: '../GenericHandler.ashx?Action=LoggedInUsers',
+                success: function (data) {
+                    var container = $("[id$='divUserList']");
+                    container.empty();
+                    container.append(data);
+                }
+            });
+            $("[id$='lnkAllUsers']").click(function () {
+                ///////////////
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url: '../GenericHandler.ashx?Action=AllLoggedInUsers',
+                    success: function (data) {
+                        var container = $("[id$='divAllUserList']");
+                        container.empty();
+                        container.append(data);
+                    }
+                });
+                ////////////////
+                Popup.ShowPopup('divAllusers');
+                $("#divAllusers").addClass("popdiv_wide");
+                $('div.col_div').last().css("border-right", "0px");
+                return false;
+            });
+            $("a.close_popup").click(function () {
+                Popup.hide("divAllusers");
+                return false;
+            });
+
+            $("ul.sub").each(function () {
+                if ($(this).html().Trim() == "") {
+                    $(this).hide();
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <form runat="server">
+    <div id="mainwrap">
+        <!-- // HEADER WRAPPER STARTS HERE \\ -->
+        <div id="header">           
+                <label class="logo" style="cursor:pointer;" onclick="window.location.href='../Home/Dashboard.aspx';">
+                </label>
+            <a class="home_link" href="../Home/Dashboard.aspx"></a>            
+            <div class="login_info">            
+                You are logged in as: <span class="user" id="spnUserName" runat="server"></span>
+                &nbsp;<span class="sep">|</span>&nbsp;
+                <asp:LinkButton ID="lnkLogout" runat="server" Text="Logout" OnClick="lnkLogout_Click"></asp:LinkButton>
+            </div>              
+            <div class="cls">
+            </div>
+        </div>
+        <!-- // HEADER WRAPPER ENDS HERE \\ -->
+        <!-- // TOP NAV WRAPPER STARTS HERE \\ -->
+        <div id="topnav" runat="server">
+        </div>
+        <!-- // TOP NAV WRAPPER ENDS HERE \\ -->
+        <!-- // CONTENT HOLDER WRAPPER STARTS HERE \\ -->
+        <div id="content_holder">
+            <div class="content">
+                <%if (CurPage.Contains("Dashboard.aspx"))
+                  {%>
+                 <br clear="all" />
+                <%} %>
+                <div class="dashboard_content">
+                    <%if (CurPage.Contains("Dashboard.aspx"))
+                      {%>
+                       <br clear="all" />
+                    <%} %>
+                    <!-- // THREE COL CONTENT HOLDER STARTS HERE \\ -->
+                    <div class="three_col_div_holder">
+                        <div class="float_div">                           
+                            <br clear="all" />
+                            <div class="common_div sub float_left"></div>
+                        </div>
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                        <!-- // 3 COL CONTENT HOLDER ENDS HERE \\ -->
+                        <div class="cls">
+                        </div>
+                    </div>
+                    <div class="cls">
+                    </div>
+                </div>
+                <div class="cls">
+                </div>
+            </div>
+            <div class="cls">
+            </div>
+        </div>
+        <!-- // CONTENT HOLDER WRAPPER ENDS HERE \\ -->
+        <!-- // FOOTER WRAPPER STARTS HERE \\ -->
+        <div id="footer">&copy; 2011<strong>Geosensys</strong>. Rights Reserved.<br clear="all" /></div>
+        <!-- // FOOTER WRAPPER ENDS HERE \\ -->
+        <div class="cls">
+        </div>    
+    </div>
+    <!-- // MAIN WRAPPER ENDS HERE \\ -->
+    </form>
+   
+</body>
+</html>

@@ -1,0 +1,72 @@
+﻿.ac_odd
+{
+    background: #dddddd;
+}
+.ac_results
+{
+    padding: 0px;
+    border: 1px solid black;
+    background-color: white;
+    overflow: hidden;
+    z-index: 99999;
+}
+.ac_results ul
+{
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.ac_results li
+{
+    margin: 0px;
+    padding: 2px 5px;
+    cursor: default;
+    display: block;
+    font: menu;
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+}
+.ac_loading
+{
+    background: url(loading.jpg) right no-repeat;
+}
+.ac_over
+{
+    background-color: #0A246A;
+    color: white;
+}
+.cmenu
+{
+    margin: 0;
+    padding: 0.3em;
+    list-style-type: none;
+    background-color: white;
+}
+.cmenu li:hover
+{
+}
+.cmenu hr
+{
+    border: 0;
+    border-bottom: 1px solid grey;
+    margin: 3px 0px 3px 0px;
+    width: 10em;
+}
+.cmenu a
+{
+    border: 0 !important;
+}
+.cmenu a:hover
+{
+    text-decoration: underline !important;
+}
+.cmenu .topSep
+{
+    font-size: 90%;
+    border-top: 1px solid gray;
+    margin-top: 0.3em;
+    padding-top: 0.3em;
+}

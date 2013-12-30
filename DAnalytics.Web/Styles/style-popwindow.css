@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:4px;
+	font:normal 11px/normal Tahoma, Geneva, sans-serif;
+	color:#1d1d1d;
+	background:#dfecf4;
+}
+form, p, h1, h2, h3, h4, h5, h6, ul, ol, li {
+	padding:0;
+	margin:0;
+}
+ul, ol, li {
+	list-style-type:none;
+}
+a {
+	outline:0;
+}
+img {
+	border:0;
+}
+.cls {
+	clear:both;
+}
+#image_gallery_holder {
+	padding:14px;
+	border:1px solid #b7c4cc;
+	background:#fff;	
+}
+#image_gallery_holder .header {
+	height:35px;
+	padding:6px 0 0 0;
+	background:url(../Images/header-logo.png) no-repeat right top;
+	clear:both;
+}
+#image_gallery_holder .header h3 {
+	font:bold 14px/normal Tahoma, Geneva, sans-serif;
+	color:#20597c;
+	float:left;
+}
+#image_gallery_holder .col_holder {
+	padding:6px;
+	margin:0 12px 12px 0;
+	border:1px solid #cdd6dc;
+	float:left;
+}
+#image_gallery_holder .col_holder .image_thumbs {
+	min-width:136px;
+	min-height:87px;
+	margin:0 0 4px 0;
+	border:1px solid #858b8e;	
+}
+#image_gallery_holder .col_holder .image_thumbs img {
+    width: 100px;
+	height: 100px;	
+}
+
+
+
+
+#image_gallery_holder .col_holder .image_desc {
+	width:126px;
+	padding:3px 4px 3px 6px;
+	color:#1d1d1d;
+	background:#ecf4f9;
+	border:1px solid #a4bac7;	
+}

@@ -1,0 +1,120 @@
+﻿
+body {
+	margin:108px 0 0 0;
+	font:normal 11px/normal Tahoma, Geneva, sans-serif;
+	color:#0b0b0b;
+	background:url(../Images/login-bg.png) repeat-x left top #d7e4ec;
+}
+form, p, h1, h2, h3, h4, h5, h6, ul, ol, li {
+	padding:0;
+	margin:0;
+}
+ul, ol, li {
+	list-style-type:none;
+}
+a {
+	outline:0;
+}
+img {
+	border:0;
+}
+.cls {
+	clear:both;
+}
+/* MAIN CONTAINER */
+
+#mainwrap {
+	width:728px;
+	height:207px;
+	margin:0 auto;
+	padding:156px 0 0 0;
+	background:url(../Images/login-wrapper-bg.png) no-repeat left top;
+}
+/* Top Header Section */
+
+.loginbox {
+	width:372px;
+	height:124px;
+	padding:49px 0 0 42px;
+	margin:0 0 0 180px;
+	background:url(../Images/loginbox.png) no-repeat left top;
+}
+.loginbox a {
+	margin:8px 0 0 0;
+	font:normal 11px/normal Tahoma, Geneva, sans-serif;
+	color:#0b0b0b;
+	text-decoration:none;
+	float:left;
+}
+.loginbox a:hover {
+	color:#B81D1D;
+}
+.action_options {
+	padding-left:81px;
+}
+.loginbox label {
+	width:68px;
+	margin:8px 12px 7px 0;
+	font:normal 11px/normal Tahoma, Geneva, sans-serif;
+	color:#0b0b0b;
+	float:left;
+}
+.loginbox .input_text_holder {
+	width:174px;
+	height:28px;
+	padding:0 10px 4px 10px;
+	margin:0 10px 7px 0;
+	border:0;
+	background:url(../Images/input-bg.png) no-repeat left top;
+	float:left;
+}
+.loginbox .input_text_holder input[type="text"], .loginbox .input_text_holder input[type="password"] {
+	width:174px;
+	height:24px;
+	margin:4px 0 0 0 \9;
+ *margin:4px 0 0 0;
+	font:normal 11px/normal Tahoma, Geneva, sans-serif;
+	color:#0b0b0b;
+	border:0;
+	background:transparent;
+}
+.loginbox input[type="submit"] {
+	width:58px;
+	height:26px;
+	padding:0 0 4px 0;
+	margin:2px 0 0 0;
+	font:bold 11px/normal Tahoma, Geneva, sans-serif;
+	color:#fff;
+	text-align:center;
+	border:0;
+	background:url(../Images/button.png) no-repeat left top;
+	cursor:pointer;
+	float:left;
+}
+.loginbox input[type="checkbox"] {
+	margin:8px 9px 0 0;
+    margin:6px 6px 0 0 \9;
+	float:left;
+}
+.auto_width {
+	width:auto !important;
+	margin:8px 19px 0 0 !important;
+}
+#footer {
+	color:#242b2f;
+	text-align:center;
+	margin:5px 0 0 44px;
+	clear:both;
+}
+.powered_by {
+	margin:5px 0 0 0;
+	display:block;
+}
+.powered_by a {
+	font-weight:bold;
+	color:#1e6490;
+	text-decoration:none;
+}
+.powered_by a:hover {
+	color:#1f1f1f;
+}
