@@ -1,7 +1,12 @@
 ﻿$(function () {
 
-    $("[id$='txtDtFrom']").datepicker({ dateFormat: "dd/mm/yyyy" });
-    $("[id$='txtDtTo']").datepicker({ dateFormat: "dd/mm/yyyy" });
+    $("[id$='txtDtFrom']").datepicker({ dateFormat: "dd/mm/yyyy", changeMonth: true,
+        changeYear: true, showButtonPanel: true
+    });
+    $("[id$='txtDtTo']").datepicker({ dateFormat: "dd/mm/yyyy", changeMonth: true,
+        changeYear: true, showButtonPanel: true
+    });
+
 
     $("[id$='txtSearchBoreHole']").autocomplete("../ajax/autocompleter.ashx?act=searchborehole",
     {
@@ -30,5 +35,6 @@
     }).result(function (e, data, formatted) {
         $("[id$='hdnBoreHoleID']").val(data.BoreHoleID);
     });
+
 
 });

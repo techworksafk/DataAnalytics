@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Site.Master" AutoEventWireup="true"
     CodeBehind="Borehole.aspx.cs" Inherits="DAnalytics.Web.Report.Borehole" %>
 
+<%@ Register Src="../UserControls/BoreHoleChart.ascx" TagName="BoreHoleChart" TagPrefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/Autocomplete.css" rel="stylesheet" type="text/css" />
 </asp:Content>
@@ -11,7 +12,8 @@
                 <div class="template_head">
                     <span>Borehole</span></div>
                 <div class="button_holder">
-                    <asp:Button ID="btnView" runat="server" CommandName="Print" Text="View" OnClick="btnView_Click" OnClientClick="return ValidateBorehole();" />
+                    <asp:Button ID="btnView" runat="server" CommandName="Print" Text="View" OnClick="btnView_Click"
+                        OnClientClick="return ValidateBorehole();" />
                 </div>
             </div>
             <div class="cls">
@@ -30,7 +32,7 @@
                     <input type="hidden" runat="server" id="hdnUserID" />
                     <input type="hidden" runat="server" id="hdnBoreHoleID" />
                 </div>
-                <script language="javascript" type="text/javascript" src="../Jquery/jquery.autocomplete.js"></script>
+                <%--<script language="javascript" type="text/javascript" src="../Jquery/jquery.autocomplete.js"></script>--%>
                 <script language="javascript" type="text/javascript" src="../Scripts/dailyreport.js"></script>
                 <script language="javascript" type="text/javascript">
 
@@ -152,6 +154,9 @@
                     <HeaderStyle CssClass="grid_header" />
                     <AlternatingRowStyle CssClass="alt" />
                 </asp:GridView>
+                <div class="cls">
+                </div>
+                <uc1:BoreHoleChart ID="BoreHoleChart1" runat="server" />
             </div>
         </div>
     </div>

@@ -220,7 +220,9 @@
     <Content Include="Report\OLDProj_TeamMemberTranscriptsReport.aspx" />
     <Content Include="Report\OLDProj_UsageReport.aspx" />
     <Content Include="Scripts\dailyreport.js" />
+    <Content Include="Scripts\exporting.js" />
     <Content Include="Scripts\General.js" />
+    <Content Include="Scripts\highcharts.js" />
     <Content Include="SignIn.aspx" />
     <Content Include="Styles\Autocomplete.css" />
     <Content Include="Styles\Login_Style.css" />
@@ -229,6 +231,7 @@
     <Content Include="Jquery\jquery-1.4.1.min.js" />
     <Content Include="Styles\style-pop.css" />
     <Content Include="Styles\style-popwindow.css" />
+    <Content Include="UserControls\BoreHoleChart.ascx" />
     <Content Include="UserControls\GridPager.ascx" />
     <Content Include="ajax\autocompleter.ashx" />
     <None Include="Properties\Settings.settings">
@@ -387,6 +390,13 @@
     </Compile>
     <Compile Include="Master\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BoreHoleChart.ascx.cs">
+      <DependentUpon>BoreHoleChart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\BoreHoleChart.ascx.designer.cs">
+      <DependentUpon>BoreHoleChart.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\GridPager.ascx.cs">
       <DependentUpon>GridPager.ascx</DependentUpon>
