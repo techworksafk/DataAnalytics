@@ -5,17 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Globalization;
-
+using DAnalytics.UTIL;
 namespace DAnalytics.Web.Report
 {
-    public partial class MinMaxSummary : BasePage.DAnalBase
+    public partial class Borehole : BasePage.DAnalBase
     {
         CultureInfo _enGB = new CultureInfo("en-GB");
 
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
-            this.MenuID = 6;
+            this.MenuID = 7;
         }
 
         protected override void OnPreRender(EventArgs e)
@@ -46,9 +46,8 @@ namespace DAnalytics.Web.Report
             if (!string.IsNullOrEmpty(txtDtTo.Text))
                 _ToDate = Convert.ToDateTime(txtDtTo.Text, _enGB);
 
-            gvBoreHoles.DataSource = BL.Report.DailyReport.GetMinMaxSummary(0, _FromDate, _ToDate);
-            gvBoreHoles.DataBind();
+            gvBoreHole.DataSource = BL.Report.DailyReport.GetBoreholeReport(hdnBoreholeID.Value.ConvertToInt32(), _FromDate, _ToDate);
+            gvBoreHole.DataBind();
         }
-
     }
 }

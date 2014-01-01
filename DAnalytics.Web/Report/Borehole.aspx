@@ -1,8 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/Site.Master" AutoEventWireup="true"
-    CodeBehind="MinMaxSummary.aspx.cs" Inherits="DAnalytics.Web.Report.MinMaxSummary" %>
+    CodeBehind="Borehole.aspx.cs" Inherits="DAnalytics.Web.Report.Borehole" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <link href="../Styles/Autocomplete.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="float_div_right_wide">
@@ -25,15 +24,10 @@
                 <asp:TextBox ID="txtDtTo" runat="server" CssClass="input_text input_small"></asp:TextBox>
                 <label>
                     Borehole:</label>
-                <asp:DropDownList ID="ddlBoreHole" runat="server">
-                </asp:DropDownList>
-                <%--   <label>Sort By:</label>
-                <asp:DropDownList ID="ddlSort" runat="server" CssClass="medium" AutoPostBack="false">
-                    <asp:ListItem Text="BoreHole Ascending" Value="1" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="BoreHole Descending" Value="2"></asp:ListItem>             
-                </asp:DropDownList>  --%>
+                <asp:TextBox ID="txtBorehole" runat="server" CssClass="input_text input_small"></asp:TextBox>
                 <div class="cls">
                     <input type="hidden" runat="server" id="hdnUserID" />
+                    <input type="hidden" runat="server" id="hdnBoreholeID" />
                 </div>
                 <script language="javascript" type="text/javascript" src="../Jquery/jquery.autocomplete.js"></script>
                 <script language="javascript" type="text/javascript">
@@ -45,8 +39,7 @@
                     function PrintReport() {
                         var From = $("[id$='txtDtFrom']").val();
                         var To = $("[id$='txtDtTo']").val();
-                        //var UID = $("[id$='hdnUserID']").val();
-                        var BoreHole = $("[id$='ddlBoreHole']").val();
+                        var BoreHole = $("[id$='hdnBoreholeID']").val();
                         //return CallReport("MinMaxRpt", "&From=" + From + "&To=" + To + "&BoreHole=" + BoreHole); // + "&Sort=" + SortExp);
                     }
 
@@ -55,7 +48,8 @@
             <div class="cls">
             </div>
             <div class="grid">
-                <asp:GridView ID="gvBoreHoles" runat="server" AutoGenerateColumns="false" Width="100%" EmptyDataText="No records to display">
+                <asp:GridView ID="gvBoreHole" runat="server" AutoGenerateColumns="false" Width="100%"
+                    EmptyDataText="No records to display">
                     <Columns>
                         <asp:TemplateField HeaderText="Borehole">
                             <ItemTemplate>
@@ -63,7 +57,18 @@
                                     <%#Eval("BoreHoleName")%></span>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="MinOrMax" HeaderText="" />
+                        <asp:TemplateField HeaderText="Date and Time">
+                            <ItemTemplate>
+                                <span title="Reading Date and Time">
+                                    <%#Eval("ReadingDateTime")%></span>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Device">
+                            <ItemTemplate>
+                                <span title="DeviceID">
+                                    <%#Eval("DeviceID")%></span>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="CH4">
                             <ItemTemplate>
                                 <span title="CH4">

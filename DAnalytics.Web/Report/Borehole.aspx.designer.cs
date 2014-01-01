@@ -10,7 +10,7 @@
 namespace DAnalytics.Web.Report {
     
     
-    public partial class MinMaxSummary {
+    public partial class Borehole {
         
         /// <summary>
         /// btnView control.
@@ -40,13 +40,13 @@ namespace DAnalytics.Web.Report {
         protected global::System.Web.UI.WebControls.TextBox txtDtTo;
         
         /// <summary>
-        /// ddlBoreHole control.
+        /// txtBorehole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBoreHole;
+        protected global::System.Web.UI.WebControls.TextBox txtBorehole;
         
         /// <summary>
         /// hdnUserID control.
@@ -58,12 +58,21 @@ namespace DAnalytics.Web.Report {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnUserID;
         
         /// <summary>
-        /// gvBoreHoles control.
+        /// hdnBoreholeID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBoreHoles;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnBoreholeID;
+        
+        /// <summary>
+        /// gvBoreHole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvBoreHole;
     }
 }

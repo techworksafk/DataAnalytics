@@ -52,6 +52,7 @@
     <Compile Include="Admin\Common.cs" />
     <Compile Include="Admin\DAnalyticsUser.cs" />
     <Compile Include="Admin\UserRole.cs" />
+    <Compile Include="Report\DailyReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

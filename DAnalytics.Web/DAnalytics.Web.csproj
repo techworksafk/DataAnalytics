@@ -212,6 +212,7 @@
     <Content Include="Jquery\jquery_ui_datepicker\smothness\jquery_ui_datepicker.css" />
     <Content Include="Jquery\jquery_ui_datepicker\timepicker_plug\css\style.css" />
     <Content Include="Jquery\jquery_ui_datepicker\timepicker_plug\timepicker.js" />
+    <Content Include="Report\Borehole.aspx" />
     <Content Include="Report\MinMaxSummary.aspx" />
     <Content Include="Report\OLDProj_ErrorRatio.aspx" />
     <Content Include="Report\OLDProj_MispronouncedReport.aspx" />
@@ -269,6 +270,7 @@
     <Compile Include="Admin\RangeColorSettings.aspx.designer.cs">
       <DependentUpon>RangeColorSettings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ajax\autocompleter.cs" />
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,6 +321,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\Borehole.aspx.cs">
+      <DependentUpon>Borehole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\Borehole.aspx.designer.cs">
+      <DependentUpon>Borehole.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report\MinMaxSummary.aspx.cs">
       <DependentUpon>MinMaxSummary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
