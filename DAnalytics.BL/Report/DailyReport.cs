@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Collections.Generic;
 
 namespace DAnalytics.BL.Report
 {
@@ -16,5 +17,11 @@ namespace DAnalytics.BL.Report
 
             return DA.Report.DailyReport.GetBoreholeReport(BoreHoleID, FromDate, ToDate);
         }
+
+        public static List<DAnalytics.MO.Borehole> SearchBorehole(string SearchString)
+        {
+            return DA.Report.DailyReport.SearchBorehole(SearchString);
+        }
+
     }
 }

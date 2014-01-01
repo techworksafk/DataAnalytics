@@ -219,6 +219,7 @@
     <Content Include="Report\OLDProj_ResubmittedClaimsReport.aspx" />
     <Content Include="Report\OLDProj_TeamMemberTranscriptsReport.aspx" />
     <Content Include="Report\OLDProj_UsageReport.aspx" />
+    <Content Include="Scripts\dailyreport.js" />
     <Content Include="Scripts\General.js" />
     <Content Include="SignIn.aspx" />
     <Content Include="Styles\Autocomplete.css" />
@@ -229,6 +230,7 @@
     <Content Include="Styles\style-pop.css" />
     <Content Include="Styles\style-popwindow.css" />
     <Content Include="UserControls\GridPager.ascx" />
+    <Content Include="ajax\autocompleter.ashx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -270,7 +272,9 @@
     <Compile Include="Admin\RangeColorSettings.aspx.designer.cs">
       <DependentUpon>RangeColorSettings.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ajax\autocompleter.cs" />
+    <Compile Include="ajax\autocompleter.ashx.cs">
+      <DependentUpon>autocompleter.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

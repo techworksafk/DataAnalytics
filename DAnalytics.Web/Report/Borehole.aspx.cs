@@ -26,8 +26,8 @@ namespace DAnalytics.Web.Report
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            txtDtFrom.Attributes.Add("readonly", "readonly");
-            txtDtTo.Attributes.Add("readonly", "readonly");
+            //txtDtFrom.Attributes.Add("readonly", "readonly");
+            //txtDtTo.Attributes.Add("readonly", "readonly");
             if (!IsPostBack)
             {
                 hdnUserID.Value = UserID.ToString();
@@ -46,7 +46,7 @@ namespace DAnalytics.Web.Report
             if (!string.IsNullOrEmpty(txtDtTo.Text))
                 _ToDate = Convert.ToDateTime(txtDtTo.Text, _enGB);
 
-            gvBoreHole.DataSource = BL.Report.DailyReport.GetBoreholeReport(hdnBoreholeID.Value.ConvertToInt32(), _FromDate, _ToDate);
+            gvBoreHole.DataSource = BL.Report.DailyReport.GetBoreholeReport(hdnBoreHoleID.Value.ConvertToInt32(), _FromDate, _ToDate);
             gvBoreHole.DataBind();
         }
     }

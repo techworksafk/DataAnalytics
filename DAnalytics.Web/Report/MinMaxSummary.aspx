@@ -25,22 +25,14 @@
                 <asp:TextBox ID="txtDtTo" runat="server" CssClass="input_text input_small"></asp:TextBox>
                 <label>
                     Borehole:</label>
-                <asp:DropDownList ID="ddlBoreHole" runat="server">
-                </asp:DropDownList>
-                <%--   <label>Sort By:</label>
-                <asp:DropDownList ID="ddlSort" runat="server" CssClass="medium" AutoPostBack="false">
-                    <asp:ListItem Text="BoreHole Ascending" Value="1" Selected="True"></asp:ListItem>
-                    <asp:ListItem Text="BoreHole Descending" Value="2"></asp:ListItem>             
-                </asp:DropDownList>  --%>
+                <asp:TextBox ID="txtSearchBoreHole" runat="server" CssClass="input_text input_small"></asp:TextBox>
                 <div class="cls">
                     <input type="hidden" runat="server" id="hdnUserID" />
+                    <input type="hidden" runat="server" id="hdnBoreHoleID" />
                 </div>
                 <script language="javascript" type="text/javascript" src="../Jquery/jquery.autocomplete.js"></script>
+                <script language="javascript" type="text/javascript" src="../Scripts/dailyreport.js"></script>
                 <script language="javascript" type="text/javascript">
-                    $(function () {
-                        $("[id$='txtDtFrom']").datepicker({ dateFormat: "dd/mm/yyyy" });
-                        $("[id$='txtDtTo']").datepicker({ dateFormat: "dd/mm/yyyy" });
-                    });
 
                     function PrintReport() {
                         var From = $("[id$='txtDtFrom']").val();
@@ -55,7 +47,8 @@
             <div class="cls">
             </div>
             <div class="grid">
-                <asp:GridView ID="gvBoreHoles" runat="server" AutoGenerateColumns="false" Width="100%" EmptyDataText="No records to display">
+                <asp:GridView ID="gvBoreHoles" runat="server" AutoGenerateColumns="false" Width="100%"
+                    EmptyDataText="No records to display">
                     <Columns>
                         <asp:TemplateField HeaderText="Borehole">
                             <ItemTemplate>

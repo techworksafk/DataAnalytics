@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Collections.Generic;
+using DAnalytics.UTIL;
 namespace DAnalytics.DA.Report
 {
     public class DailyReport
@@ -42,6 +43,41 @@ namespace DAnalytics.DA.Report
                 sqlParams = null;
             }
             return _ds;
+        }
+
+        public static List<DAnalytics.MO.Borehole> SearchBorehole(string SearchString)
+        {
+            List<DAnalytics.MO.Borehole> _lst = null;
+
+            SqlParameter[] sqlParams = new SqlParameter[]{
+                UTIL.SqlHelper.CreateParameter("@SearchString",SearchString,SqlDbType.VarChar,ParameterDirection.Input)
+            };
+            try
+            {
+                using (SqlDataReader rdr = UTIL.SqlHelper.ExecuteReader(UTIL.DAnalHelper.ConnectionString, CommandType.StoredProcedure, "usp_Borehole_Autocomplete", sqlParams))
+                {
+                    while (rdr.Read())
+                    {
+                        if (_lst == null) _lst = new List<MO.Borehole>();
+
+                        MO.Borehole _obj = new MO.Borehole
+                        {
+
+                            BoreHoleID = rdr["BoreHoleID"].ConvertToInt32(),
+                            BoreHoleName = Convert.ToString(rdr["BoreHoleName"]),
+                            AreaName = Convert.ToString(rdr["AreaName"]),
+                            BoreholeType = Convert.ToString(rdr["BoreholeType"]),
+                            Depth = Convert.ToString(rdr["Depth"])
+                        };
+                        _lst.Add(_obj);
+                    }
+                }
+            }
+            finally
+            {
+                sqlParams = null;
+            }
+            return _lst;
         }
     }
 }

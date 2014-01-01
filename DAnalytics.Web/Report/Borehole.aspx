@@ -2,15 +2,16 @@
     CodeBehind="Borehole.aspx.cs" Inherits="DAnalytics.Web.Report.Borehole" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="../Styles/Autocomplete.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="float_div_right_wide">
         <div class="inner_content_holder">
             <div class="transcripts_details_header">
                 <div class="template_head">
-                    <span>Min and Max Summary</span></div>
+                    <span>Borehole</span></div>
                 <div class="button_holder">
-                    <asp:Button ID="btnView" runat="server" CommandName="Print" Text="View" OnClick="btnView_Click" />
+                    <asp:Button ID="btnView" runat="server" CommandName="Print" Text="View" OnClick="btnView_Click" OnClientClick="return ValidateBorehole();" />
                 </div>
             </div>
             <div class="cls">
@@ -24,22 +25,28 @@
                 <asp:TextBox ID="txtDtTo" runat="server" CssClass="input_text input_small"></asp:TextBox>
                 <label>
                     Borehole:</label>
-                <asp:TextBox ID="txtBorehole" runat="server" CssClass="input_text input_small"></asp:TextBox>
+                <asp:TextBox ID="txtSearchBoreHole" runat="server" CssClass="input_text input_small"></asp:TextBox>
                 <div class="cls">
                     <input type="hidden" runat="server" id="hdnUserID" />
-                    <input type="hidden" runat="server" id="hdnBoreholeID" />
+                    <input type="hidden" runat="server" id="hdnBoreHoleID" />
                 </div>
                 <script language="javascript" type="text/javascript" src="../Jquery/jquery.autocomplete.js"></script>
+                <script language="javascript" type="text/javascript" src="../Scripts/dailyreport.js"></script>
                 <script language="javascript" type="text/javascript">
-                    $(function () {
-                        $("[id$='txtDtFrom']").datepicker({ dateFormat: "dd/mm/yyyy" });
-                        $("[id$='txtDtTo']").datepicker({ dateFormat: "dd/mm/yyyy" });
-                    });
+
+                    function ValidateBorehole() {
+                        if ($("[id$='hdnBoreHoleID']").val() == "0" || $("[id$='hdnBoreHoleID']").val() == "") {
+                            alert("Select valid borehole");
+                            return false;
+                        }
+                        else
+                            return true;
+                    }
 
                     function PrintReport() {
                         var From = $("[id$='txtDtFrom']").val();
                         var To = $("[id$='txtDtTo']").val();
-                        var BoreHole = $("[id$='hdnBoreholeID']").val();
+                        var BoreHole = $("[id$='hdnBoreHoleID']").val();
                         //return CallReport("MinMaxRpt", "&From=" + From + "&To=" + To + "&BoreHole=" + BoreHole); // + "&Sort=" + SortExp);
                     }
 
@@ -60,10 +67,10 @@
                         <asp:TemplateField HeaderText="Date and Time">
                             <ItemTemplate>
                                 <span title="Reading Date and Time">
-                                    <%#Eval("ReadingDateTime")%></span>
+                                    <%# String.Format("{0:dd-MMM-yyyy HH:mm}", Eval("ReadingDateTime"))%></span>
                             </ItemTemplate>
                         </asp:TemplateField>
-                         <asp:TemplateField HeaderText="Device">
+                        <asp:TemplateField HeaderText="Device">
                             <ItemTemplate>
                                 <span title="DeviceID">
                                     <%#Eval("DeviceID")%></span>

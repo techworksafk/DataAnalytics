@@ -40,13 +40,13 @@ namespace DAnalytics.Web.Report {
         protected global::System.Web.UI.WebControls.TextBox txtDtTo;
         
         /// <summary>
-        /// txtBorehole control.
+        /// txtSearchBoreHole control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBorehole;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchBoreHole;
         
         /// <summary>
         /// hdnUserID control.
@@ -58,13 +58,13 @@ namespace DAnalytics.Web.Report {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnUserID;
         
         /// <summary>
-        /// hdnBoreholeID control.
+        /// hdnBoreHoleID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnBoreholeID;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnBoreHoleID;
         
         /// <summary>
         /// gvBoreHole control.
