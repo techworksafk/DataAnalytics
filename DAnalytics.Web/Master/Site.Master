@@ -7,13 +7,14 @@
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
     <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
-    <%--    <link rel="stylesheet" type="text/css" href="../Jquery/jquery_ui_datepicker/timepicker_plug/css/style.css" />
-
-    <link rel="stylesheet" type="text/css" href="../Jquery/jquery_ui_datepicker/smothness/jquery_ui_datepicker.css" />--%>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <%-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <%--<script language="javascript" type="text/javascript" src="../Jquery/jquery-1.4.1.min.js"></script>--%>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>--%>
+
+    <link rel="stylesheet" href="../Jquery/themes/1.10.3/jquery-ui.1.10.3.css">
+    <script src="../Jquery/jquery1.9.1.min.js"></script>
+    <script src="../Jquery/jquery-ui.1.10.3.js"></script>
+
     <script language="javascript" type="text/javascript" src="../Jquery/popup.js"></script>
     <script language="javascript" type="text/javascript" src="../Scripts/General.js"></script>
     <link rel="stylesheet" type="text/css" href="../pro_dropdown_2/pro_dropdown_2.css" />

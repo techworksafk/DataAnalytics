@@ -30,7 +30,6 @@
                     <input type="hidden" runat="server" id="hdnUserID" />
                     <input type="hidden" runat="server" id="hdnBoreHoleID" />
                 </div>
-                <script language="javascript" type="text/javascript" src="../Jquery/jquery.autocomplete.js"></script>
                 <script language="javascript" type="text/javascript" src="../Scripts/dailyreport.js"></script>
                 <script language="javascript" type="text/javascript">
 

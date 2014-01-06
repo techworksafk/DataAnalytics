@@ -2,12 +2,12 @@
     Inherits="DAnalytics.Web.UserControls.BoreHoleChart" %>
 <div id="container" style="height: 400px; width: 100%">
 </div>
-<%--<script language="javascript" type="text/javascript" src="../Scripts/highcharts.js"></script>
-<script language="javascript" type="text/javascript" src="../Scripts/exporting.js"></script>--%>
+<script language="javascript" type="text/javascript" src="../Scripts/highcharts.js"></script>
+<script language="javascript" type="text/javascript" src="../Scripts/exporting.js"></script>
 
 
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<%--<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>--%>
 
 <script language="javascript" type="text/javascript">
 

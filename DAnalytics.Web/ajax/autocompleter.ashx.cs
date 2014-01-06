@@ -23,11 +23,11 @@ namespace DAnalytics.Web.ajax
 
         private void SearchBorehole(HttpContext context)
         {
-            if (!string.IsNullOrEmpty(context.Request.QueryString["q"])) //  'q' is the query string from the autosuggest 
+            //if (!string.IsNullOrEmpty(context.Request.QueryString["q"])) //  'q' is the query string from the autosuggest 
             {
                 List<DAnalytics.MO.Borehole> lst = BL.Report.DailyReport.SearchBorehole(Convert.ToString(context.Request.QueryString["q"]));
 
-                if (lst.Count > 0)
+                if (lst != null && lst.Count > 0)
                 {
                     context.Response.Write("{\"BoreHoles\" : [");
                     try
