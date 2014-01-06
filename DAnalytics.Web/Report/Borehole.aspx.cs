@@ -46,8 +46,13 @@ namespace DAnalytics.Web.Report
             if (!string.IsNullOrEmpty(txtDtTo.Text))
                 _ToDate = Convert.ToDateTime(txtDtTo.Text, _enGB);
 
-            gvBoreHole.DataSource = BL.Report.DailyReport.GetBoreholeReport(hdnBoreHoleID.Value.ConvertToInt32(), _FromDate, _ToDate);
+            System.Data.DataSet _ds = BL.Report.DailyReport.GetBoreholeReport(hdnBoreHoleID.Value.ConvertToInt32(), _FromDate, _ToDate);
+
+            gvBoreHole.DataSource = _ds;
             gvBoreHole.DataBind();
+
+            BoreHoleChart1.DataSource = _ds;
+            BoreHoleChart1.PlotGraph();
         }
     }
 }

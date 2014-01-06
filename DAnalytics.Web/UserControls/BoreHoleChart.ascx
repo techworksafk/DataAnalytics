@@ -4,11 +4,8 @@
 </div>
 <script language="javascript" type="text/javascript" src="../Scripts/highcharts.js"></script>
 <script language="javascript" type="text/javascript" src="../Scripts/exporting.js"></script>
-
-
 <%--<script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>--%>
-
 <script language="javascript" type="text/javascript">
 
     $(function () {
@@ -17,26 +14,25 @@
                 zoomType: 'xy'
             },
             title: {
-                text: 'Average Monthly Weather Data for Tokyo'
+                text: 'Daily Report'
             },
             subtitle: {
-                text: 'Source: WorldClimate.com'
+                text: 'Borehole Daily Report'
             },
             xAxis: [{
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                categories: [<%=this.Category %>]
             }],
             yAxis: [{ // Primary yAxis
                 labels: {
                     formatter: function () {
-                        return this.value + '°C';
+                        return this.value + 'nm';
                     },
                     style: {
                         color: '#89A54E'
                     }
                 },
                 title: {
-                    text: 'Temperature',
+                    text: 'CH4',
                     style: {
                         color: '#89A54E'
                     }
@@ -46,14 +42,14 @@
             }, { // Secondary yAxis
                 gridLineWidth: 0,
                 title: {
-                    text: 'Rainfall',
+                    text: 'CO2',
                     style: {
                         color: '#4572A7'
                     }
                 },
                 labels: {
                     formatter: function () {
-                        return this.value + ' mm';
+                        return this.value + ' nm';
                     },
                     style: {
                         color: '#4572A7'
@@ -63,14 +59,14 @@
             }, { // Tertiary yAxis
                 gridLineWidth: 0,
                 title: {
-                    text: 'Sea-Level Pressure',
+                    text: 'CO',
                     style: {
                         color: '#AA4643'
                     }
                 },
                 labels: {
                     formatter: function () {
-                        return this.value + ' mb';
+                        return this.value + ' nm';
                     },
                     style: {
                         color: '#AA4643'
@@ -91,36 +87,37 @@
                 backgroundColor: '#FFFFFF'
             },
             series: [{
-                name: 'Rainfall',
+                name: 'CH4',
                 color: '#4572A7',
-                type: 'column',
-                yAxis: 1,
-                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
+                type: 'spline',
+                yAxis: 0,
+                data: [<%=this.CH4 %>],
                 tooltip: {
-                    valueSuffix: ' mm'
+                    valueSuffix: ' nm'
                 }
 
             }, {
-                name: 'Sea-Level Pressure',
+                name: 'CO2',
                 type: 'spline',
                 color: '#AA4643',
-                yAxis: 2,
-                data: [1016, 1016, 1015.9, 1015.5, 1012.3, 1009.5, 1009.6, 1010.2, 1013.1, 1016.9, 1018.2, 1016.7],
+                yAxis: 1,
+                data: [<%=this.CO2 %>],
                 marker: {
                     enabled: false
                 },
                 dashStyle: 'shortdot',
                 tooltip: {
-                    valueSuffix: ' mb'
+                    valueSuffix: ' nm'
                 }
 
             }, {
-                name: 'Temperature',
+                name: 'CO',
                 color: '#89A54E',
+                yAxis: 2,
                 type: 'spline',
-                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6],
+                data: [<%=this.CO %>],
                 tooltip: {
-                    valueSuffix: ' °C'
+                    valueSuffix: ' nm'
                 }
             }]
         });

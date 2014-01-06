@@ -175,12 +175,15 @@
     <Content Include="Images\view-map.png" />
     <Content Include="Images\view-more.png" />
     <Content Include="Images\view-pictures.png" />
+    <Content Include="Jquery\jquery-ui.1.10.3.js" />
     <Content Include="Jquery\jquery.animation.easing.js" />
     <Content Include="Jquery\jquery.autocomplete.js" />
     <Content Include="Jquery\jquery.numeric.js" />
+    <Content Include="Jquery\jquery1.9.1.min.js" />
     <Content Include="Jquery\JqueryMaskInput.js" />
     <Content Include="Jquery\kabbar.jquery.min.js" />
     <Content Include="Jquery\popup.js" />
+    <Content Include="Jquery\themes\1.10.3\jquery-ui.1.10.3.css" />
     <Content Include="pro_dropdown_2\arrow.gif" />
     <Content Include="pro_dropdown_2\arrow_over.gif" />
     <Content Include="pro_dropdown_2\pro_dropdown_2.css" />
