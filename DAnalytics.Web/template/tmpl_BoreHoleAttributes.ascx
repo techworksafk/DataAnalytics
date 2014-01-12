@@ -1,99 +1,406 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="tmpl_BoreHoleAttributes.ascx.cs"
     Inherits="DAnalytics.Web.template.tmpl_BoreHoleAttributes" %>
-<asp:GridView ID="gvBoreHole" runat="server" AutoGenerateColumns="false" Width="100%"
-    EmptyDataText="No records to display">
-    <Columns>
-        <asp:TemplateField HeaderText="Borehole">
-            <ItemTemplate>
-                <span title="Borehole">
-                    <%#Eval("BoreHoleName")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Date and Time">
-            <ItemTemplate>
-                <span title="Reading Date and Time">
-                    <%# String.Format("{0:dd-MMM-yyyy HH:mm}", Eval("ReadingDateTime"))%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Device">
-            <ItemTemplate>
-                <span title="DeviceID">
-                    <%#Eval("DeviceID")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="CH4">
-            <ItemTemplate>
-                <span title="CH4">
-                    <%#Eval("CH4")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="CO2">
-            <ItemTemplate>
-                <span title="CO2">
-                    <%#Eval("CO2")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="O2">
-            <ItemTemplate>
-                <span title="O2">
-                    <%#Eval("O2")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="VOC">
-            <ItemTemplate>
-                <span title="VOC">
-                    <%#Eval("VOC")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="H2S">
-            <ItemTemplate>
-                <span title="H2S">
-                    <%#Eval("H2S")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="CO">
-            <ItemTemplate>
-                <span title="CO">
-                    <%#Eval("CO")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Borehole Pressure">
-            <ItemTemplate>
-                <span title="Borehole Pressure">
-                    <%#Eval("Borehole_Pressure")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Atmospheric Pressure">
-            <ItemTemplate>
-                <span title="Atmospheric Pressure">
-                    <%#Eval("Atmospheric_Pressure")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Pressure Diff">
-            <ItemTemplate>
-                <span title="Pressure Diff">
-                    <%#Eval("Pressure_Diff")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Temperature">
-            <ItemTemplate>
-                <span title="Temperature">
-                    <%#Eval("Temperature")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Water Level">
-            <ItemTemplate>
-                <span title="Water Level">
-                    <%#Eval("Water_Level")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField HeaderText="Battery">
-            <ItemTemplate>
-                <span title="Battery">
-                    <%#Eval("Battery")%></span>
-            </ItemTemplate>
-        </asp:TemplateField>
-    </Columns>
-    <HeaderStyle CssClass="grid_header" />
-    <AlternatingRowStyle CssClass="alt" />
-</asp:GridView>
+###ATTRIBUTE_TABLE###
+<br />
+<div id='<%=this.ID + "_Pressure" %>' style="height: 400px; width: 100%">
+</div>
+<br />
+<div id='<%=this.ID + "_CH4VOC" %>' style="height: 400px; width: 100%">
+</div>
+<br />
+<div id='<%=this.ID + "_CO2O2" %>' style="height: 400px; width: 100%">
+</div>
+<br />
+<div id='<%=this.ID + "_Temperature" %>' style="height: 400px; width: 100%">
+</div>
+<br />
+<div id='<%=this.ID + "_CH4WaterLevelPressure" %>' style="height: 400px; width: 100%">
+</div>
+<script language="javascript" type="text/javascript">
+
+    $(function () {
+        $('<%="#" + this.ID + "_Pressure" %>').highcharts({
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Daily Report'
+            },
+            subtitle: {
+                text: 'Borehole Daily Report'
+            },
+            xAxis: [{
+                categories: [<%=this.Category %>]
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    formatter: function () {
+                        return this.value + 'nm';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Borehole Pressure',
+                    style: {
+                        color: '#89A54E'
+                    }
+                }
+            }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 80,
+                floating: true,
+                backgroundColor: '#FFFFFF'
+            },
+            series: [{
+                name: 'Borehole_Pressure',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 0,
+                data: [<%=this.Borehole_Pressure %>],
+                tooltip: {
+                    valueSuffix: ' nm'
+                }
+            }]
+        });
+    });
+
+
+    $(function () {
+        $('<%="#" + this.ID + "_CH4VOC" %>').highcharts({
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Daily Report'
+            },
+            subtitle: {
+                text: 'Borehole Daily Report'
+            },
+            xAxis: [{
+                categories: [<%=this.Category %>]
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    formatter: function () {
+                        return this.value + 'C';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'CH4',
+                    style: {
+                        color: '#89A54E'
+                    }
+                }
+            },{ 
+                labels: {
+                    formatter: function () {
+                        return this.value + 'C';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'VOC',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                opposite:true
+            }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 80,
+                floating: true,
+                backgroundColor: '#FFFFFF'
+            },
+            series: [{
+                name: 'CH4',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 0,
+                data: [<%=this.CH4%>],
+                tooltip: {
+                    valueSuffix: ' C'
+                }
+            },
+            {
+                name: 'VOC',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 1,
+                data: [<%=this.VOC%>],
+                tooltip: {
+                    valueSuffix: ' C'
+                }
+            }]
+        });
+    });
+
+
+    $(function () {
+        $('<%="#" + this.ID + "_CO2O2" %>').highcharts({
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Daily Report'
+            },
+            subtitle: {
+                text: 'Borehole Daily Report'
+            },
+            xAxis: [{
+                categories: [<%=this.Category %>]
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    formatter: function () {
+                        return this.value + 'C';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'CO2',
+                    style: {
+                        color: '#89A54E'
+                    }
+                }
+            },{ 
+                labels: {
+                    formatter: function () {
+                        return this.value + 'C';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'O2',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                opposite:true
+            }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 80,
+                floating: true,
+                backgroundColor: '#FFFFFF'
+            },
+            series: [{
+                name: 'CO2',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 0,
+                data: [<%=this.CO2%>],
+                tooltip: {
+                    valueSuffix: ' C'
+                }
+            },
+            {
+                name: 'O2',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 1,
+                data: [<%=this.O2%>],
+                tooltip: {
+                    valueSuffix: ' C'
+                }
+            }]
+        });
+    });
+
+
+
+    $(function () {
+        $('<%="#" + this.ID + "_CH4WaterPressure" %>').highcharts({
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Daily Report'
+            },
+            subtitle: {
+                text: 'Borehole Daily Report'
+            },
+            xAxis: [{
+                categories: [<%=this.Category %>]
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    formatter: function () {
+                        return this.value + 'C';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'CH4',
+                    style: {
+                        color: '#89A54E'
+                    }
+                }
+            },{ 
+                labels: {
+                    formatter: function () {
+                        return this.value + 'C';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Water Level',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                opposite:true
+            },{ 
+                labels: {
+                    formatter: function () {
+                        return this.value + 'C';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Pressure',
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                opposite:true
+            }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 80,
+                floating: true,
+                backgroundColor: '#FFFFFF'
+            },
+            series: [{
+                name: 'CH4',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 0,
+                data: [<%=this.CH4%>],
+                tooltip: {
+                    valueSuffix: ' C'
+                }
+            },
+            {
+                name: 'WaterLevel',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 1,
+                data: [<%=this.WaterLevel%>],
+                tooltip: {
+                    valueSuffix: ' C'
+                }
+            },
+            {
+                name: 'Pressure',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 2,
+                data: [<%=this.Pressure%>],
+                tooltip: {
+                    valueSuffix: ' C'
+                }
+            }]
+        });
+    });
+
+
+    $(function () {
+        $('<%="#" + this.ID + "_Temperature" %>').highcharts({
+            chart: {
+                zoomType: 'xy'
+            },
+            title: {
+                text: 'Daily Report'
+            },
+            subtitle: {
+                text: 'Borehole Daily Report'
+            },
+            xAxis: [{
+                categories: [<%=this.Category %>]
+            }],
+            yAxis: [{ // Primary yAxis
+                labels: {
+                    formatter: function () {
+                        return this.value + 'C';
+                    },
+                    style: {
+                        color: '#89A54E'
+                    }
+                },
+                title: {
+                    text: 'Temperature',
+                    style: {
+                        color: '#89A54E'
+                    }
+                }
+            }],
+            tooltip: {
+                shared: true
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                x: 120,
+                verticalAlign: 'top',
+                y: 80,
+                floating: true,
+                backgroundColor: '#FFFFFF'
+            },
+            series: [{
+                name: 'Temperature',
+                color: '#4572A7',
+                type: 'spline',
+                yAxis: 0,
+                data: [<%=this.Temperature %>],
+                tooltip: {
+                    valueSuffix: ' C'
+                }
+            }]
+        });
+    });
+
+
+</script>

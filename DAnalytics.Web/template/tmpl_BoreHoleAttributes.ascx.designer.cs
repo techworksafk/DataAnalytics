@@ -11,14 +11,5 @@ namespace DAnalytics.Web.template {
     
     
     public partial class tmpl_BoreHoleAttributes {
-        
-        /// <summary>
-        /// gvBoreHole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvBoreHole;
     }
 }
