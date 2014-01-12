@@ -7,11 +7,11 @@ namespace DAnalytics.DA.Report
 {
     public class DailyReport
     {
-        public static DataSet GetMinMaxSummary(int BoreHoleID, DateTime? FromDate, DateTime? ToDate)
+        public static DataSet GetMinMaxSummary(DataTable dt, DateTime? FromDate, DateTime? ToDate)
         {
             DataSet _ds;
             SqlParameter[] sqlParams = new SqlParameter[]{
-                UTIL.SqlHelper.CreateParameter("@BoreHoleID",BoreHoleID,SqlDbType.Int,ParameterDirection.Input),
+                UTIL.SqlHelper.CreateParameter("@T_BoreHoleID",dt,SqlDbType.Structured,ParameterDirection.Input),
                 UTIL.SqlHelper.CreateParameter("@FromDate",FromDate,SqlDbType.Date,ParameterDirection.Input),
                 UTIL.SqlHelper.CreateParameter("@ToDate",ToDate,SqlDbType.Date,ParameterDirection.Input)
             };
@@ -26,11 +26,11 @@ namespace DAnalytics.DA.Report
             return _ds;
         }
 
-        public static DataSet GetBoreholeReport(int BoreHoleID, DateTime? FromDate, DateTime? ToDate)
+        public static DataSet GetBoreholeReport(DataTable dt, DateTime? FromDate, DateTime? ToDate)
         {
             DataSet _ds;
             SqlParameter[] sqlParams = new SqlParameter[]{
-                UTIL.SqlHelper.CreateParameter("@BoreHoleID",BoreHoleID,SqlDbType.Int,ParameterDirection.Input),
+                UTIL.SqlHelper.CreateParameter("@T_BoreHoleID",dt,SqlDbType.Structured,ParameterDirection.Input),
                 UTIL.SqlHelper.CreateParameter("@FromDate",FromDate,SqlDbType.Date,ParameterDirection.Input),
                 UTIL.SqlHelper.CreateParameter("@ToDate",ToDate,SqlDbType.Date,ParameterDirection.Input)
             };

@@ -398,6 +398,7 @@
     <Compile Include="Master\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="template\DailyReport.cs" />
     <Compile Include="template\tmpl_BoreHoleAttributes.ascx.cs">
       <DependentUpon>tmpl_BoreHoleAttributes.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
