@@ -234,6 +234,10 @@
     <Content Include="Jquery\jquery-1.4.1.min.js" />
     <Content Include="Styles\style-pop.css" />
     <Content Include="Styles\style-popwindow.css" />
+    <Content Include="template\tmpl_BoreHoleAttributes.ascx" />
+    <Content Include="template\tmpl_CH4Max.ascx" />
+    <Content Include="template\tmpl_DailyReport.htm" />
+    <Content Include="template\tmpl_MinMaxTable.ascx" />
     <Content Include="UserControls\BoreHoleChart.ascx" />
     <Content Include="UserControls\GridPager.ascx" />
     <Content Include="ajax\autocompleter.ashx" />
@@ -393,6 +397,27 @@
     </Compile>
     <Compile Include="Master\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="template\tmpl_BoreHoleAttributes.ascx.cs">
+      <DependentUpon>tmpl_BoreHoleAttributes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="template\tmpl_BoreHoleAttributes.ascx.designer.cs">
+      <DependentUpon>tmpl_BoreHoleAttributes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="template\tmpl_CH4Max.ascx.cs">
+      <DependentUpon>tmpl_CH4Max.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="template\tmpl_CH4Max.ascx.designer.cs">
+      <DependentUpon>tmpl_CH4Max.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="template\tmpl_MinMaxTable.ascx.cs">
+      <DependentUpon>tmpl_MinMaxTable.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="template\tmpl_MinMaxTable.ascx.designer.cs">
+      <DependentUpon>tmpl_MinMaxTable.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\BoreHoleChart.ascx.cs">
       <DependentUpon>BoreHoleChart.ascx</DependentUpon>
