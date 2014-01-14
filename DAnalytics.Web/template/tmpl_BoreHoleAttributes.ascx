@@ -78,10 +78,10 @@
                 }
             }]
         });
-    });
+    
 
 
-    $(function () {
+    
         $('<%="#" + this.ID + "_CH4VOC" %>').highcharts({
             chart: {
                 zoomType: 'xy'
@@ -160,10 +160,10 @@
                 }
             }]
         });
-    });
+    
 
 
-    $(function () {
+    
         $('<%="#" + this.ID + "_CO2O2" %>').highcharts({
             chart: {
                 zoomType: 'xy'
@@ -242,12 +242,12 @@
                 }
             }]
         });
-    });
+    
 
 
 
-    $(function () {
-        $('<%="#" + this.ID + "_CH4WaterPressure" %>').highcharts({
+    
+        $('<%="#" + this.ID + "_CH4WaterLevelPressure" %>').highcharts({
             chart: {
                 zoomType: 'xy'
             },
@@ -351,10 +351,10 @@
                 }
             }]
         });
-    });
+    
 
 
-    $(function () {
+    
         $('<%="#" + this.ID + "_Temperature" %>').highcharts({
             chart: {
                 zoomType: 'xy'
@@ -407,6 +407,7 @@
                 }
             }]
         });
+
     });
 
 

@@ -61,16 +61,22 @@ namespace DAnalytics.web
                     _uc_BoreHoleAttributes.DataSource = dsBoreHole.Tables[0].Select(" BoreHoleID = " + Convert.ToString(dr["BoreHoleID"]));
                     _Graph.Append(_uc_BoreHoleAttributes.PlotGraph());
 
-                    _uc_tmpl_CH4Max.PlotValues.Add(new PlotValue { CH4 = Convert.ToString(dr["CH4"]), BoreHoleName = Convert.ToString(dr["BoreHoleName"]) });
+                    if (Convert.ToString(dr["CH4"]).ToUpper() != "NA")
+                        _uc_tmpl_CH4Max.PlotValues.Add(new PlotValue { CH4 = Convert.ToString(dr["CH4"]), BoreHoleName = Convert.ToString(dr["BoreHoleName"]) });
                 }
 
                 if (_uc_tmpl_CH4Max.PlotValues.Count > 24)
+                {
                     _CH4MaxPlot.Append(_uc_tmpl_CH4Max.PlotGraph());
+                    _uc_tmpl_CH4Max = null;
+                }
             }
 
             if (_uc_tmpl_CH4Max != null && !_uc_tmpl_CH4Max.HasPlotted)
+            {
                 _CH4MaxPlot.Append(_uc_tmpl_CH4Max.PlotGraph());
-
+                _uc_tmpl_CH4Max = null;
+            }
             _MinMax.Append("</table>");
             _CH4Max.Append("</table>");
 
@@ -96,7 +102,7 @@ namespace DAnalytics.web
 
         void AppendMinMaxHeader(StringBuilder _sb)
         {
-            _sb.Append("<th>")
+            _sb.Append("<tr>")
                 .Append("<td>BoreHole</td>")
                 .Append("<td>Min/Max</td>")
                 .Append("<td>CH4</td>")
@@ -111,7 +117,7 @@ namespace DAnalytics.web
                 .Append("<td>Temperature</td>")
                 .Append("<td>Water Level</td>")
                 .Append("<td>Battery</td>")
-                .Append("</th>");
+                .Append("</tr>");
         }
 
         void AppendMinMaxValues(DataRow dr, StringBuilder _sb)
@@ -136,10 +142,10 @@ namespace DAnalytics.web
 
         void AppendCH4MaxHeader(StringBuilder _sb)
         {
-            _sb.Append("<th>")
+            _sb.Append("<tr>")
                 .Append("<td>BoreHole</td>")
                 .Append("<td>CH4</td>")
-                .Append("</th>");
+                .Append("</tr>");
         }
 
         void AppendCH4MaxValues(DataRow dr, StringBuilder _sb)

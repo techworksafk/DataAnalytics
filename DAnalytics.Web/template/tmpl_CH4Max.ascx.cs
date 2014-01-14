@@ -9,7 +9,7 @@ namespace DAnalytics.Web.template
     {
         public tmpl_CH4Max()
         {
-            ID = new Guid().ToString();
+            ID = Guid.NewGuid().ToString();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -46,14 +46,16 @@ namespace DAnalytics.Web.template
             {
                 PlotValue _obj = _PlotValues[iCount];
 
-                if (iCount != 0)
+                if (_obj.CH4.ToUpper() != "NA")
                 {
-                    _Category.Append(",");
-                    _CH4.Append(",");
+                    if (_Category.ToString().Length > 0 && !_Category.ToString().EndsWith(","))
+                    {
+                        _Category.Append(",");
+                        _CH4.Append(",");
+                    }
+                    _Category.Append("'").Append(_obj.BoreHoleName).Append("'");
+                    _CH4.Append(_obj.CH4);
                 }
-
-                _Category.Append("'").Append(_obj.BoreHoleName).Append("'");
-                _CH4.Append(_obj.CH4);
             }
             HasPlotted = true;
             return GetControlString();

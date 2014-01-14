@@ -7,7 +7,7 @@
 </div>
 <script language="javascript" type="text/javascript">
     $(function () {
-        $('<%="#" + this.ID + "_CH4" %>').highcharts({
+        $('<%="#" + this.ID + "_CH4Max" %>').highcharts({
             chart: {
                 zoomType: 'xy'
             },

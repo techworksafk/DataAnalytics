@@ -62,7 +62,7 @@ namespace DAnalytics.Web.template
 
         void AppendHeader(StringBuilder _sb)
         {
-            _sb.Append("<th>")
+            _sb.Append("<tr>")
                 .Append("<td>BoreHole</td>")
                 .Append("<td>Date Time</td>")
                 .Append("<td>CH4</td>")
@@ -77,14 +77,14 @@ namespace DAnalytics.Web.template
                 .Append("<td>Temperature</td>")
                 .Append("<td>Water Level</td>")
                 .Append("<td>Battery</td>")
-                .Append("</th>");
+                .Append("</tr>");
         }
 
         void AppendValues(DataRow dr, StringBuilder _sb)
         {
             _sb.Append("<tr>")
                 .Append("<td>").Append(Convert.ToString(dr["BoreHoleName"])).Append("</td>")
-                .Append("<td>").Append(Convert.ToDateTime(dr["ReadDateTime"]).ToString("dd-MMM-yy HH:mm")).Append("</td>")
+                .Append("<td>").Append(Convert.ToDateTime(dr["ReadingDateTime"]).ToString("dd-MMM-yy HH:mm")).Append("</td>")
                 .Append("<td>").Append(Convert.ToString(dr["CH4"])).Append("</td>")
                 .Append("<td>").Append(Convert.ToString(dr["CO2"])).Append("</td>")
                 .Append("<td>").Append(Convert.ToString(dr["O2"])).Append("</td>")
@@ -102,17 +102,17 @@ namespace DAnalytics.Web.template
 
         public string PlotGraph()
         {
-            if (DataSource != null)
+            if (DataSource != null && DataSource.Length > 0)
             {
                 _BoreHoleTable.Append("<table cellspacing=\"0\" cellpadding=\"0\" border=\"1\">");
                 AppendHeader(_BoreHoleTable);
-                for(int iCount = 0;iCount < DataSource.Length;iCount++)
+                for (int iCount = 0; iCount < DataSource.Length; iCount++)
                 {
                     DataRow dr = DataSource[iCount];
-                    
+
                     AppendValues(dr, _BoreHoleTable);
 
-                    if (iCount!=0)
+                    if (iCount != 0)
                     {
                         _Category.Append(",");
                         _CH4.Append(",");
@@ -131,22 +131,32 @@ namespace DAnalytics.Web.template
                     }
 
                     _Category.Append("'").Append(Convert.ToDateTime(dr["ReadingDateTime"]).ToString("dd-MMM HH:mm")).Append("'");
-                    _CH4.Append(Convert.ToString(dr["CH4"]));
-                    _CO2.Append(Convert.ToString(dr["CO2"]));
-                    _O2.Append(Convert.ToString(dr["O2"]));
-                    _VOC.Append(Convert.ToString(dr["VOC"]));
-                    _H2S.Append(Convert.ToString(dr["H2S"]));
-                    _CO.Append(Convert.ToString(dr["CO"]));
-                    _Borehole_Pressure.Append(Convert.ToString(dr["Borehole_Pressure"]));
-                    _Atmospheric_Pressure.Append(Convert.ToString(dr["Atmospheric_Pressure"]));
-                    _Pressure_Diff.Append(Convert.ToString(dr["Pressure_Diff"]));
-                    _Temperature.Append(Convert.ToString(dr["Temperature"]));
-                    _Water_Level.Append(Convert.ToString(dr["Water_Level"]));
-                    _Battery.Append(Convert.ToString(dr["Battery"]));
+                    _CH4.Append(FormatValue(Convert.ToString(dr["CH4"])));
+                    _CO2.Append(FormatValue(Convert.ToString(dr["CO2"])));
+                    _O2.Append(FormatValue(Convert.ToString(dr["O2"])));
+                    _VOC.Append(FormatValue(Convert.ToString(dr["VOC"])));
+                    _H2S.Append(FormatValue(Convert.ToString(dr["H2S"])));
+                    _CO.Append(FormatValue(Convert.ToString(dr["CO"])));
+                    _Borehole_Pressure.Append(FormatValue(Convert.ToString(dr["Borehole_Pressure"])));
+                    _Atmospheric_Pressure.Append(FormatValue(Convert.ToString(dr["Atmospheric_Pressure"])));
+                    _Pressure_Diff.Append(FormatValue(Convert.ToString(dr["Pressure_Diff"])));
+                    _Temperature.Append(FormatValue(Convert.ToString(dr["Temperature"])));
+                    _Water_Level.Append(FormatValue(Convert.ToString(dr["Water_Level"])));
+                    _Battery.Append(FormatValue(Convert.ToString(dr["Battery"])));
                 }
                 _BoreHoleTable.Append("</table>");
             }
+            else
+            {
+                return string.Empty;
+            }
             return GetControlString();
+        }
+
+
+        string FormatValue(string Value)
+        {
+            return Value.Trim() == string.Empty ? "0" : Value;
         }
     }
 }
