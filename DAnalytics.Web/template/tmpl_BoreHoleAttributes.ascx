@@ -1,5 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="tmpl_BoreHoleAttributes.ascx.cs"
     Inherits="DAnalytics.Web.template.tmpl_BoreHoleAttributes" %>
+<%=this.BoreHoleTable %>
+<br />
+<div class="page_brk">
+</div>
 <div id='<%=this.ID + "_Pressure" %>' style="height: 400px; width: 100%">
 </div>
 <br />
@@ -331,7 +335,7 @@
                 color: '#4572A7',
                 type: 'spline',
                 yAxis: 1,
-                data: [<%=this.WaterLevel%>],
+                data: [<%=this.Water_Level%>],
                 tooltip: {
                     valueSuffix: ' C'
                 }
@@ -341,7 +345,7 @@
                 color: '#4572A7',
                 type: 'spline',
                 yAxis: 2,
-                data: [<%=this.Pressure%>],
+                data: [<%=this.Borehole_Pressure%>],
                 tooltip: {
                     valueSuffix: ' C'
                 }

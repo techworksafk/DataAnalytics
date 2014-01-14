@@ -38,6 +38,7 @@ namespace DAnalytics.Web.template
 
         public string CH4 { get { return _CH4.ToString(); } }
         public string Category { get { return _Category.ToString(); } }
+        public bool HasPlotted { get; set; }
 
         public string PlotGraph()
         {
@@ -54,6 +55,7 @@ namespace DAnalytics.Web.template
                 _Category.Append("'").Append(_obj.BoreHoleName).Append("'");
                 _CH4.Append(_obj.CH4);
             }
+            HasPlotted = true;
             return GetControlString();
         }
     }
