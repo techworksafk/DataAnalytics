@@ -22,7 +22,7 @@ namespace DAnalytics.Web.template
 
         public int BoreHoleID { get; set; }
 
-        public DataSet DataSource { get; set; }
+        public DataRow[] DataSource { get; set; }
 
         StringBuilder _CH4 = new StringBuilder();
         StringBuilder _CO2 = new StringBuilder();
@@ -59,7 +59,7 @@ namespace DAnalytics.Web.template
 
             if (DataSource != null)
             {
-                foreach (DataRow dr in  DataSource.Tables[0].Select(" BoreHoleID = " + BoreHoleID.ToString()))
+                foreach (DataRow dr in  DataSource)
                 {
                     if (!_IsFirstRow)
                     {
