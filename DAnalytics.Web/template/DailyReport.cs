@@ -13,6 +13,9 @@ namespace DAnalytics.web
     {
         public string GenerateReport(DataTable dt, DateTime FromDate, DateTime ToDate)
         {
+
+            List<string> _DailyReportFiles = new List<string>();
+
             string _HtmlTemplate = string.Empty;
 
             using (FileStream fs = new FileStream(HttpContext.Current.Server.MapPath("../template/tmpl_DailyReport.htm"), FileMode.Open, FileAccess.Read))
@@ -27,7 +30,7 @@ namespace DAnalytics.web
             string _ReportDirectoryPhysical = HttpContext.Current.Server.MapPath(_ReportDirectoryAbsolute);
             string _ReportHtmlPath = Path.Combine(_ReportDirectoryPhysical, _ReportHtml);
 
-
+            _DailyReportFiles.Add(_ReportHtmlPath);
 
             DataSet dsBoreHole = BL.Report.DailyReport.GetBoreholeReport(dt, FromDate, ToDate);
             DataSet dsMinMax = BL.Report.DailyReport.GetMinMaxSummary(dt, FromDate, ToDate);
@@ -58,8 +61,10 @@ namespace DAnalytics.web
 
                     tmpl_BoreHoleAttributes _uc_BoreHoleAttributes = LoadControl("../template/tmpl_BoreHoleAttributes.ascx") as tmpl_BoreHoleAttributes;
                     _uc_BoreHoleAttributes.ID = Convert.ToString(dr["BoreHoleID"]);
+                    _uc_BoreHoleAttributes.BoreHoleName = Convert.ToString(dr["BoreHoleName"]);
+                    _uc_BoreHoleAttributes.DailyReportFiles = _DailyReportFiles;
                     _uc_BoreHoleAttributes.DataSource = dsBoreHole.Tables[0].Select(" BoreHoleID = " + Convert.ToString(dr["BoreHoleID"]));
-                    _Graph.Append(_uc_BoreHoleAttributes.PlotGraph());
+                    _uc_BoreHoleAttributes.PlotGraph();
 
                     if (Convert.ToString(dr["CH4"]).ToUpper() != "NA")
                         _uc_tmpl_CH4Max.PlotValues.Add(new PlotValue { CH4 = Convert.ToString(dr["CH4"]), BoreHoleName = Convert.ToString(dr["BoreHoleName"]) });
@@ -88,7 +93,6 @@ namespace DAnalytics.web
             _HtmlTemplate = _HtmlTemplate.Replace("###MINMAX_SUMMARY###", _MinMax.ToString());
             _HtmlTemplate = _HtmlTemplate.Replace("###CH4MAX_SUMMARY###", _CH4Max.ToString());
             _HtmlTemplate = _HtmlTemplate.Replace("###CH4MAX_SUMMARY_GRAPH###", _CH4MaxPlot.ToString());
-            _HtmlTemplate = _HtmlTemplate.Replace("###BOREHOLE_ATTRIBUTES###", _Graph.ToString());
 
             using (FileStream fs = new FileStream(_ReportHtmlPath, FileMode.OpenOrCreate, FileAccess.Write))
             {

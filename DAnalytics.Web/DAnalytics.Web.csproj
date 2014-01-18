@@ -235,6 +235,7 @@
     <Content Include="Styles\style-pop.css" />
     <Content Include="Styles\style-popwindow.css" />
     <Content Include="template\tmpl_BoreHoleAttributes.ascx" />
+    <Content Include="template\tmpl_BoreHoleAttributes.htm" />
     <Content Include="template\tmpl_CH4Max.ascx" />
     <Content Include="template\tmpl_DailyReport.htm" />
     <Content Include="template\tmpl_MinMaxTable.ascx" />

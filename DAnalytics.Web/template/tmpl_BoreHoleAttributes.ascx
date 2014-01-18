@@ -1,5 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="tmpl_BoreHoleAttributes.ascx.cs"
     Inherits="DAnalytics.Web.template.tmpl_BoreHoleAttributes" %>
+<h1>
+    <%=this.BoreHoleName %></h1>
+<br />
 <%=this.BoreHoleTable %>
 <br />
 <div class="page_brk">

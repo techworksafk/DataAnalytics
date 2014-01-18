@@ -2,6 +2,9 @@
 using System.Data;
 using System.Text;
 using System.Web.UI;
+using System.Web;
+using System.IO;
+using System.Collections.Generic;
 
 namespace DAnalytics.Web.template
 {
@@ -20,7 +23,17 @@ namespace DAnalytics.Web.template
             return stringWrite.ToString();
         }
 
+        List<string> _DailyReportFiles;
+
+        public List<string> DailyReportFiles
+        {
+            get { return _DailyReportFiles; }
+            set { _DailyReportFiles = value; }
+        }
+
         public int BoreHoleID { get; set; }
+
+        public string BoreHoleName { get; set; }
 
         public DataRow[] DataSource { get; set; }
 
@@ -104,6 +117,23 @@ namespace DAnalytics.Web.template
         {
             if (DataSource != null && DataSource.Length > 0)
             {
+
+                string _HtmlTemplate = string.Empty;
+
+                using (FileStream fs = new FileStream(HttpContext.Current.Server.MapPath("../template/tmpl_BoreHoleAttributes.htm"), FileMode.Open, FileAccess.Read))
+                {
+                    StreamReader _sr = new StreamReader(fs);
+                    _HtmlTemplate = _sr.ReadToEnd();
+                    _sr.Close();
+                }
+
+                string _ReportHtml = this.BoreHoleName + ".htm";
+                string _ReportDirectoryAbsolute = "../reports/";
+                string _ReportDirectoryPhysical = HttpContext.Current.Server.MapPath(_ReportDirectoryAbsolute);
+                string _ReportHtmlPath = Path.Combine(_ReportDirectoryPhysical, _ReportHtml);
+
+                _DailyReportFiles.Add(_ReportHtmlPath);
+
                 _BoreHoleTable.Append("<table cellspacing=\"0\" cellpadding=\"0\" border=\"1\">");
                 AppendHeader(_BoreHoleTable);
                 for (int iCount = 0; iCount < DataSource.Length; iCount++)
@@ -145,11 +175,25 @@ namespace DAnalytics.Web.template
                     _Battery.Append(FormatValue(Convert.ToString(dr["Battery"])));
                 }
                 _BoreHoleTable.Append("</table>");
+
+
+                _HtmlTemplate = _HtmlTemplate.Replace("###BOREHOLE_ATTRIBUTES###", GetControlString());
+
+                using (FileStream fs = new FileStream(_ReportHtmlPath, FileMode.OpenOrCreate, FileAccess.Write))
+                {
+                    StreamWriter _sw = new StreamWriter(fs);
+                    _sw.Write(_HtmlTemplate);
+                    _sw.Flush();
+                    _sw.Close();
+                }
             }
             else
             {
                 return string.Empty;
             }
+
+            
+
             return GetControlString();
         }
 
