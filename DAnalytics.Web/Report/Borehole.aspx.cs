@@ -34,6 +34,8 @@ namespace DAnalytics.Web.Report
                 hdnUserID.Value = UserID.ToString();
                 txtDtFrom.Text = UTIL.DAnalHelper.FirstDayOfMonth(System.DateTime.Now).ToString("dd/MM/yyyy");
                 txtDtTo.Text = UTIL.DAnalHelper.LastDayOfMonth(System.DateTime.Now).ToString("dd/MM/yyyy");
+
+                BoreHoleTree1.Bind();
             }
 
         }

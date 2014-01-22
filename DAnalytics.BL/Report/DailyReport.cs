@@ -21,5 +21,10 @@ namespace DAnalytics.BL.Report
             return DA.Report.DailyReport.SearchBorehole(SearchString);
         }
 
+        public static List<DAnalytics.MO.Borehole> GetBorehole(string SearchString)
+        {
+            return DA.Report.DailyReport.GetBorehole(SearchString);
+        }
+
     }
 }

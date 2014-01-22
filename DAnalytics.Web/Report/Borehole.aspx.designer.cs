@@ -22,6 +22,15 @@ namespace DAnalytics.Web.Report {
         protected global::System.Web.UI.WebControls.Button btnView;
         
         /// <summary>
+        /// BoreHoleTree1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DAnalytics.Web.UserControls.BoreHoleTree BoreHoleTree1;
+        
+        /// <summary>
         /// txtDtFrom control.
         /// </summary>
         /// <remarks>

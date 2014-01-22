@@ -8,5 +8,8 @@ namespace DAnalytics.MO
         public string Depth { get; set; }
         public string AreaName { get; set; }
         public string BoreholeType { get; set; }
+        public int LoopID { get; set; }
+        public string LoopName { get; set; }
+        public int AreaID { get; set; }
     }
 }

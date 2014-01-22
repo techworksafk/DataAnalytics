@@ -2,6 +2,7 @@
     CodeBehind="Borehole.aspx.cs" Inherits="DAnalytics.Web.Report.Borehole" %>
 
 <%@ Register Src="../UserControls/BoreHoleChart.ascx" TagName="BoreHoleChart" TagPrefix="uc1" %>
+<%@ Register Src="../UserControls/BoreHoleTree.ascx" TagName="BoreHoleTree" TagPrefix="uc2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="../Styles/Autocomplete.css" rel="stylesheet" type="text/css" />
 </asp:Content>
@@ -17,6 +18,9 @@
                 </div>
             </div>
             <div class="cls">
+            </div>
+            <div class="inner_float_div">
+                <uc2:BoreHoleTree ID="BoreHoleTree1" runat="server" />
             </div>
             <div class="multi_row_elements">
                 <label>
