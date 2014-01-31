@@ -7,24 +7,21 @@
 <br />
 <div class="page_brk">
 </div>
-<div id='<%=this.ID + "_Pressure" %>' style="height: 400px; width: 100%">
+<div id='<%=this.ID + "_Pressure" %>' style="height: 400px; width: 1000px">
 </div>
 <br />
-<div id='<%=this.ID + "_CH4VOC" %>' style="height: 400px; width: 100%">
-</div>
-<br />
-<div class="page_brk">
-</div>
-<div id='<%=this.ID + "_CO2O2" %>' style="height: 300px; width: 100%">
-</div>
-<br />
-<div id='<%=this.ID + "_Temperature" %>' style="height: 300px; width: 100%">
-</div>
-<br />
-<div id='<%=this.ID + "_CH4WaterLevelPressure" %>' style="height: 300px; width: 100%">
+<div id='<%=this.ID + "_CH4VOC" %>' style="height: 400px; width: 1000px">
 </div>
 <br />
 <div class="page_brk">
+</div>
+<div id='<%=this.ID + "_CO2O2" %>' style="height: 300px; width: 1000px">
+</div>
+<br />
+<div id='<%=this.ID + "_Temperature" %>' style="height: 300px; width: 1000px">
+</div>
+<br />
+<div id='<%=this.ID + "_CH4WaterLevelPressure" %>' style="height: 300px; width: 1000px">
 </div>
 <script language="javascript" type="text/javascript">
 

@@ -238,6 +238,7 @@
     <Content Include="template\tmpl_BoreHoleAttributes.htm" />
     <Content Include="template\tmpl_CH4Max.ascx" />
     <Content Include="template\tmpl_DailyReport.htm" />
+    <Content Include="template\tmpl_DailyReportConsolidated.htm" />
     <Content Include="template\tmpl_MinMaxTable.ascx" />
     <Content Include="UserControls\BoreHoleChart.ascx" />
     <Content Include="UserControls\BoreHoleTree.ascx" />

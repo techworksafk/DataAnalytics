@@ -1,9 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="tmpl_CH4Max.ascx.cs"
     Inherits="DAnalytics.Web.template.tmpl_CH4Max" %>
-<div id='<%=this.ID + "_CH4Max" %>' style="height: 400px; width: 100%">
-</div>
-<br />
-<div class="page_brk">
+<div id='<%=this.ID + "_CH4Max" %>' style="height: 400px; width: 1000px">
 </div>
 <script language="javascript" type="text/javascript">
     $(function () {

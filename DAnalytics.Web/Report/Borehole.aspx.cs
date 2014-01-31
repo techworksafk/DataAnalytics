@@ -61,13 +61,7 @@ namespace DAnalytics.Web.Report
                 dt.Rows.Add(dr);
             }
 
-            System.Data.DataSet _ds = BL.Report.DailyReport.GetBoreholeReport(dt, _FromDate, _ToDate);
-
-            gvBoreHole.DataSource = _ds;
-            gvBoreHole.DataBind();
-
-            BoreHoleChart1.DataSource = _ds;
-            BoreHoleChart1.PlotGraph();
+            Response.Redirect(GenerateReport(dt, _FromDate.Value, _ToDate.Value));
         }
     }
 }

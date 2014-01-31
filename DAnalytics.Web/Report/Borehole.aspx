@@ -14,7 +14,7 @@
                     <span>Borehole</span></div>
                 <div class="button_holder">
                     <asp:Button ID="btnView" runat="server" CommandName="Print" Text="View" OnClick="btnView_Click"
-                        OnClientClick="return ValidateBorehole();" />
+                         />
                 </div>
             </div>
             <div class="cls">
@@ -29,9 +29,6 @@
                 <label>
                     Date To:</label>
                 <asp:TextBox ID="txtDtTo" runat="server" CssClass="input_text input_small"></asp:TextBox>
-                <label>
-                    Borehole:</label>
-                <asp:TextBox ID="txtSearchBoreHole" runat="server" CssClass="input_text input_small"></asp:TextBox>
                 <div class="cls">
                     <input type="hidden" runat="server" id="hdnUserID" />
                     <input type="hidden" runat="server" id="hdnBoreHoleID" />
@@ -40,14 +37,7 @@
                 <script language="javascript" type="text/javascript" src="../Scripts/dailyreport.js"></script>
                 <script language="javascript" type="text/javascript">
 
-                    function ValidateBorehole() {
-                        if ($("[id$='hdnBoreHoleID']").val() == "0" || $("[id$='hdnBoreHoleID']").val() == "") {
-                            alert("Select valid borehole");
-                            return false;
-                        }
-                        else
-                            return true;
-                    }
+                    
 
                     function PrintReport() {
                         var From = $("[id$='txtDtFrom']").val();

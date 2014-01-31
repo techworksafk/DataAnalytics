@@ -41,14 +41,17 @@ namespace DAnalytics.web
             StringBuilder _Graph = new StringBuilder();
             StringBuilder _DailyReport = new StringBuilder();
 
-            _MinMax.Append("<table cellspacing=\"0\" cellpadding=\"0\" border=\"1\">");
+            _MinMax.Append("<table cellspacing=\"0\" cellpadding=\"0\" border=\"1\" width=\"100%\">");
             AppendMinMaxHeader(_MinMax);
 
-            _CH4Max.Append("<table cellspacing=\"0\" cellpadding=\"0\" border=\"1\">");
+            _CH4Max.Append("<table cellspacing=\"0\" cellpadding=\"0\" border=\"1\" width=\"50%\">");
             AppendCH4MaxHeader(_CH4Max);
 
 
             tmpl_CH4Max _uc_tmpl_CH4Max = null;
+
+            bool _IsFirst = true;
+
             foreach (DataRow dr in dsMinMax.Tables[0].Rows)
             {
                 AppendMinMaxValues(dr, _MinMax);
@@ -64,7 +67,10 @@ namespace DAnalytics.web
                     _uc_BoreHoleAttributes.BoreHoleName = Convert.ToString(dr["BoreHoleName"]);
                     _uc_BoreHoleAttributes.DailyReportFiles = _DailyReportFiles;
                     _uc_BoreHoleAttributes.DataSource = dsBoreHole.Tables[0].Select(" BoreHoleID = " + Convert.ToString(dr["BoreHoleID"]));
-                    _uc_BoreHoleAttributes.PlotGraph();
+
+                    if (!_IsFirst)
+                        _Graph.Append("<div class=\"page_brk\"></div>");
+                    _Graph.Append(_uc_BoreHoleAttributes.PlotGraph());
 
                     if (Convert.ToString(dr["CH4"]).ToUpper() != "NA")
                         _uc_tmpl_CH4Max.PlotValues.Add(new PlotValue { CH4 = Convert.ToString(dr["CH4"]), BoreHoleName = Convert.ToString(dr["BoreHoleName"]) });
@@ -85,14 +91,15 @@ namespace DAnalytics.web
             _MinMax.Append("</table>");
             _CH4Max.Append("</table>");
 
-            _DailyReport.Append(_MinMax.ToString())
-                .Append(_CH4Max.ToString())
-                .Append(_CH4MaxPlot.ToString())
-                .Append(_Graph.ToString());
+            //_DailyReport.Append(_MinMax.ToString())
+            //    .Append(_CH4Max.ToString())
+            //    .Append(_CH4MaxPlot.ToString())
+            //    .Append(_Graph.ToString());
 
             _HtmlTemplate = _HtmlTemplate.Replace("###MINMAX_SUMMARY###", _MinMax.ToString());
             _HtmlTemplate = _HtmlTemplate.Replace("###CH4MAX_SUMMARY###", _CH4Max.ToString());
             _HtmlTemplate = _HtmlTemplate.Replace("###CH4MAX_SUMMARY_GRAPH###", _CH4MaxPlot.ToString());
+
 
             using (FileStream fs = new FileStream(_ReportHtmlPath, FileMode.OpenOrCreate, FileAccess.Write))
             {
@@ -101,7 +108,15 @@ namespace DAnalytics.web
                 _sw.Flush();
                 _sw.Close();
             }
-            return _ReportDirectoryAbsolute + _ReportHtml;
+
+            UTIL.Webkit _wk = new UTIL.Webkit();
+            //UTIL.WebkitFile _wkFile = new UTIL.WebkitFile
+            //{
+            //    HtmlFilePath = "http://localhost/DAnalytics.Web/reports/" + _ReportHtml,
+            //    PDFFilePath = Path.Combine(_ReportDirectoryPhysical, Path.GetFileNameWithoutExtension(_ReportHtml) + ".pdf")
+            //};
+            _wk.ConvertHtmlToPDF(_DailyReportFiles);
+            return _ReportDirectoryAbsolute;
         }
 
         void AppendMinMaxHeader(StringBuilder _sb)

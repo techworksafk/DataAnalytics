@@ -11,5 +11,8 @@ namespace DAnalytics.MO
         public int LoopID { get; set; }
         public string LoopName { get; set; }
         public int AreaID { get; set; }
+
+        public string SurveyName { get; set; }
+        public int SurveyID { get; set; }
     }
 }

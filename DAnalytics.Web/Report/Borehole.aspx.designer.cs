@@ -49,15 +49,6 @@ namespace DAnalytics.Web.Report {
         protected global::System.Web.UI.WebControls.TextBox txtDtTo;
         
         /// <summary>
-        /// txtSearchBoreHole control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchBoreHole;
-        
-        /// <summary>
         /// hdnUserID control.
         /// </summary>
         /// <remarks>
