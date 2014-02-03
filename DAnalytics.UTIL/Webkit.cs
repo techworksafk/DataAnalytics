@@ -6,6 +6,8 @@ using System.Diagnostics;
 using System.Configuration;
 using System.IO;
 using System.Threading;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 
 namespace DAnalytics.UTIL
 {
@@ -25,6 +27,7 @@ namespace DAnalytics.UTIL
         {
             get { return _IsSuccess; }
         }
+        public bool IsRootFile { get; set; }
 
         public void Convert2PDF()
         {
@@ -64,12 +67,23 @@ namespace DAnalytics.UTIL
     {
         List<WebkitFile> _Files = new List<WebkitFile>();
 
-        int _TotalHtmlFiles = 0,_ProcessedHtnlFiles = 0;
+        int _TotalHtmlFiles = 0, _ProcessedHtnlFiles = 0;
+
+        object _locker = new object();
 
         public List<WebkitFile> OutputFiles
         {
             get { return _Files; }
         }
+
+        WebkitFile _RootFile = null;
+
+        public WebkitFile RootFile
+        {
+            get { return _RootFile; }
+        }
+
+        public string DailyReportFilePath { get; set; }
 
         public void ConvertHtmlToPDF(List<string> HtmlFilesPath)
         {
@@ -77,7 +91,14 @@ namespace DAnalytics.UTIL
             {
                 _TotalHtmlFiles = HtmlFilesPath.Count;
 
-                List<AutoResetEvent> waitHandler = new List<AutoResetEvent>();
+                //_RootFile = new WebkitFile
+                //{
+                //    HtmlFilePath = "http://localhost/DAnalytics.Web/reports/" + Path.GetFileName(HtmlFilesPath[0]),
+                //    PDFFilePath = Path.Combine(Path.GetDirectoryName(HtmlFilesPath[0]), Path.GetFileNameWithoutExtension(HtmlFilesPath[0]) + ".pdf"),
+                //    IsRootFile = true
+                //};
+                //_RootFile.OnProcessCompleted += new ProcessCompleted(_File_OnProcessCompleted);
+                //_RootFile.Convert2PDF();
 
                 Semaphore _sem = new Semaphore(30, 50);
 
@@ -92,7 +113,6 @@ namespace DAnalytics.UTIL
                         WaitHandler = _sem
                     };
                     _File.OnProcessCompleted += new ProcessCompleted(_File_OnProcessCompleted);
-                    waitHandler.Add(_File.Handler);
                     Thread _trd = new Thread(new ThreadStart(delegate()
                     {
                         _File.Convert2PDF();
@@ -105,13 +125,65 @@ namespace DAnalytics.UTIL
                     Thread.Sleep(5000);
                 }
 
-                ZipFile
+                DailyReportFilePath = Path.Combine(Path.GetDirectoryName(HtmlFilesPath[0]), "DR_" + DateTime.Now.ToString("ddMMHHmmss") + ".pdf");
+
+                Document document = new Document();
+                PdfCopy writer = new PdfCopy(document, new FileStream(DailyReportFilePath, FileMode.Create, FileAccess.Write));
+                document.Open();
+
+                for (int iCount = 0; iCount < HtmlFilesPath.Count; iCount++)
+                {
+                    PdfReader reader = new PdfReader(Path.Combine(Path.GetDirectoryName(HtmlFilesPath[iCount]), Path.GetFileNameWithoutExtension(HtmlFilesPath[iCount]) + ".pdf"));
+                    reader.ConsolidateNamedDestinations();
+
+                    for (int i = 1; i <= reader.NumberOfPages; i++)
+                    {
+                        PdfImportedPage pdfpage = writer.GetImportedPage(reader, i);
+                        writer.AddPage(pdfpage);
+                    }
+                    PRAcroForm form = reader.AcroForm;
+                    if (form != null)
+                    {
+                        writer.CopyAcroForm(reader);
+                    }
+                    reader.Close();
+                }
+                writer.Close();
+                document.Close();
             }
         }
 
         void _File_OnProcessCompleted(WebkitFile _File)
         {
             _ProcessedHtnlFiles += 1;
+
+            //lock (_locker)
+            //{
+            //    if (!_File.IsRootFile)
+            //    {
+            //        Document document = new Document();
+            //        PdfCopy writer = new PdfCopy(document, new FileStream(_RootFile.PDFFilePath, FileMode.Append, FileAccess.Write));
+            //        //PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(_RootFile.PDFFilePath, FileMode.Append, FileAccess.Write));
+            //        document.Open();
+
+            //        PdfReader reader = new PdfReader(_File.PDFFilePath);
+            //        reader.ConsolidateNamedDestinations();
+
+            //        for (int i = 1; i <= reader.NumberOfPages; i++)
+            //        {
+            //            PdfImportedPage pdfpage = writer.GetImportedPage(reader, i);
+            //            writer.AddPage(pdfpage);
+            //        }
+            //        PRAcroForm form = reader.AcroForm;
+            //        if (form != null)
+            //        {
+            //            writer.CopyAcroForm(reader);
+            //        }
+            //        reader.Close();
+            //        writer.Close();
+            //        document.Close();
+            //    }
+            //}
         }
     }
 }

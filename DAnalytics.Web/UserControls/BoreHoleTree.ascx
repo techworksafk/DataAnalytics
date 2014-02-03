@@ -1,9 +1,45 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BoreHoleTree.ascx.cs"
     Inherits="DAnalytics.Web.UserControls.BoreHoleTree" %>
-<div style="width: 300px; height: 500px;">
-    <asp:TreeView ID="tvBoreHole" runat="server" ShowCheckBoxes="All" ShowExpandCollapse="true"
-        ShowLines="true">
-    </asp:TreeView>
+<div class="transcripts_details_header" id="divTreeDiv" runat="server" style="display: block;">
+    <div style="width: 100%; max-height: 400px; height: auto; overflow: auto;">
+        <asp:TreeView ID="tvBoreHole" runat="server" ShowCheckBoxes="All" ShowExpandCollapse="true"
+            ShowLines="true">
+        </asp:TreeView>
+    </div>
+    <div class="multi_row_elements">
+        <label>
+            Date From:</label>
+        <asp:TextBox ID="txtDtFrom" runat="server" CssClass="input_text input_small"></asp:TextBox>
+        <label>
+            Date To:</label>
+        <asp:TextBox ID="txtDtTo" runat="server" CssClass="input_text input_small"></asp:TextBox>
+    </div>
+    <div class="cls"></div>
+    
+    <div class="button_holder">
+        <asp:Button ID="btnView" runat="server" CommandName="Print" Text="View" OnClick="btnView_Click" />
+    </div>
+</div>
+<div class="transcripts_details_header" id="divSelectionDiv" runat="server" style="display: none;">
+    <div class="template_head" style="width: 100%">
+        <%=SelectionTable %>
+    </div>
+    <div class="cls"></div>
+    <br />
+    <div class="multi_row_elements">
+        <label>
+            Contract No:</label>
+        <asp:TextBox ID="txtContractNo" runat="server" CssClass="input_text input_small"></asp:TextBox>
+        <label>
+            Contract Title:</label>
+        <asp:TextBox ID="txtContractTitle" runat="server" CssClass="input_text input_wide"
+            Width="500px"></asp:TextBox>
+    </div>
+    <div class="cls"></div>
+    <div class="button_holder">
+        <asp:Button ID="btnGenerate" runat="server" CommandName="Print" Text="Generate" OnClick="btnGenerate_Click" />
+        <asp:Button ID="btnBack" runat="server" CommandName="Print" Text="Back" OnClick="btnBack_Click" />
+    </div>
 </div>
 <script type="text/javascript">
     $(function () {
@@ -22,7 +58,7 @@
 
         if (!isChecked) {
             DivNodesID = $("[id$='" + ChkID + "']").parents('div:eq(0)').attr("id");
-            CheckChild(DivNodesID.replace("Nodes", "CheckBox"),isChecked);
+            CheckChild(DivNodesID.replace("Nodes", "CheckBox"), isChecked);
         }
     }
 </script>

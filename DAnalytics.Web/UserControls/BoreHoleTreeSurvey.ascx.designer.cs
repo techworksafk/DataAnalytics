@@ -7,36 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAnalytics.Web.Report {
+namespace DAnalytics.Web.UserControls {
     
     
-    public partial class Borehole {
+    public partial class BoreHoleTreeSurvey {
         
         /// <summary>
-        /// BoreHoleTree1 control.
+        /// ddlYear control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DAnalytics.Web.UserControls.BoreHoleTree BoreHoleTree1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlYear;
         
         /// <summary>
-        /// hdnUserID control.
+        /// ddlArea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnUserID;
+        protected global::System.Web.UI.WebControls.DropDownList ddlArea;
         
         /// <summary>
-        /// hdnBoreHoleID control.
+        /// btnView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnBoreHoleID;
+        protected global::System.Web.UI.WebControls.Button btnView;
+        
+        /// <summary>
+        /// tvBoreHole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TreeView tvBoreHole;
     }
 }

@@ -53,6 +53,7 @@
     <Compile Include="Admin\Screen.cs" />
     <Compile Include="Admin\DAnalyticsUser.cs" />
     <Compile Include="Admin\UserRole.cs" />
+    <Compile Include="Area.cs" />
     <Compile Include="Borehole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -116,7 +116,7 @@ namespace DAnalytics.web
             //    PDFFilePath = Path.Combine(_ReportDirectoryPhysical, Path.GetFileNameWithoutExtension(_ReportHtml) + ".pdf")
             //};
             _wk.ConvertHtmlToPDF(_DailyReportFiles);
-            return _ReportDirectoryAbsolute;
+            return _wk.DailyReportFilePath;
         }
 
         void AppendMinMaxHeader(StringBuilder _sb)

@@ -26,5 +26,20 @@ namespace DAnalytics.BL.Report
             return DA.Report.DailyReport.GetBorehole(SearchString);
         }
 
+        public static List<MO.Survey> GetSurveyYear()
+        {
+            return DA.Report.DailyReport.GetSurveyYear();
+        }
+
+        public static List<MO.Area> GetArea()
+        {
+            return DA.Report.DailyReport.GetArea();
+        }
+
+
+        public static List<DAnalytics.MO.Borehole> GetBorehole(int SurveyYear, int AreaID)
+        {
+            return DA.Report.DailyReport.GetBorehole(SurveyYear, AreaID);
+        }
     }
 }

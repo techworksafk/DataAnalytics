@@ -242,6 +242,7 @@
     <Content Include="template\tmpl_MinMaxTable.ascx" />
     <Content Include="UserControls\BoreHoleChart.ascx" />
     <Content Include="UserControls\BoreHoleTree.ascx" />
+    <Content Include="UserControls\BoreHoleTreeSurvey.ascx" />
     <Content Include="UserControls\GridPager.ascx" />
     <Content Include="ajax\autocompleter.ashx" />
     <None Include="Properties\Settings.settings">
@@ -438,6 +439,13 @@
     </Compile>
     <Compile Include="UserControls\BoreHoleTree.ascx.designer.cs">
       <DependentUpon>BoreHoleTree.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BoreHoleTreeSurvey.ascx.cs">
+      <DependentUpon>BoreHoleTreeSurvey.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\BoreHoleTreeSurvey.ascx.designer.cs">
+      <DependentUpon>BoreHoleTreeSurvey.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\GridPager.ascx.cs">
       <DependentUpon>GridPager.ascx</DependentUpon>

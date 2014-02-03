@@ -19,7 +19,7 @@
             <div class="multi_row_elements">
                 <label>
                     Date From:</label>
-                <asp:TextBox ID="txtDtFrom" runat="server" CssClass="input_text input_small"></asp:TextBox>
+                <asp:TextBox ID="txtDtFrom" runat="server" CssClass="input_text input_wide"></asp:TextBox>
                 <label>
                     Date To:</label>
                 <asp:TextBox ID="txtDtTo" runat="server" CssClass="input_text input_small"></asp:TextBox>
