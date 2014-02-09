@@ -7,7 +7,19 @@ using System.Web.UI.WebControls;
 using DAnalytics.UTIL;
 namespace DAnalytics.Web.UserControls
 {
-    public delegate void GenerateReport(DataTable dt, DateTime? From, DateTime? To);
+
+    public class GenerateReportArgs
+    {
+        public DataTable BoreHoleTable { get; set; }
+
+        public DateTime? FromDate { get; set; }
+
+        public DateTime? ToDate { get; set; }
+
+        public bool DoAutoPick { get; set; }
+    }
+
+    public delegate void GenerateReport(GenerateReportArgs args);
 
     public partial class BoreHoleTree : System.Web.UI.UserControl
     {
@@ -70,7 +82,14 @@ namespace DAnalytics.Web.UserControls
             GetSelections();
 
             if (OnGenerateReport != null)
-                OnGenerateReport(dt, FromDate, ToDate);
+            {
+                GenerateReportArgs _args = new GenerateReportArgs ();
+                _args.FromDate = FromDate;
+                _args.ToDate = ToDate;
+                _args.BoreHoleTable = dt;
+                _args.DoAutoPick = false;
+                OnGenerateReport(_args);
+            }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -121,6 +140,7 @@ namespace DAnalytics.Web.UserControls
             {
                 dt = new DataTable();
                 dt.Columns.Add("BoreHoleID", typeof(int));
+                dt.Columns.Add("SurveyID", typeof(string));
             }
             foreach (TreeNode _node in tvBoreHole.Nodes)
             {

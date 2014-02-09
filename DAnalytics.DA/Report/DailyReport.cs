@@ -194,5 +194,29 @@ namespace DAnalytics.DA.Report
             }
             return _lst;
         }
+
+        public static bool SaveParam(int ReportID, DataTable dt)
+        {
+            bool _IsSaved = false;
+
+            SqlParameter[] sqlParams = new SqlParameter[]{
+                UTIL.SqlHelper.CreateParameter("@RptTable",dt,SqlDbType.Structured,ParameterDirection.Input),
+                UTIL.SqlHelper.CreateParameter("@ReportID",ReportID,SqlDbType.Date,ParameterDirection.Input)
+            };
+            try
+            {
+                UTIL.SqlHelper.ExecuteNonQuery(UTIL.DAnalHelper.ConnectionString, CommandType.StoredProcedure, "usp_DailyReportParam_Save", sqlParams);
+                _IsSaved = true;
+            }
+            catch {
+                _IsSaved = false;
+            }
+            finally
+            {
+                sqlParams = null;
+            }
+
+            return _IsSaved;
+        }
     }
 }

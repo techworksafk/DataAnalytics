@@ -6,6 +6,11 @@ namespace DAnalytics.BL.Report
 {
     public class DailyReport
     {
+        public static bool SaveParam(int ReportID, DataTable dt)
+        {
+            return DA.Report.DailyReport.SaveParam(ReportID, dt);
+        }
+
         public static DataSet GetMinMaxSummary(DataTable dt, DateTime? FromDate = null, DateTime? ToDate = null)
         {
             return DA.Report.DailyReport.GetMinMaxSummary(dt, FromDate, ToDate);

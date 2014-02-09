@@ -10,21 +10,17 @@
     <div class="float_div_right_wide">
         <div class="inner_content_holder">
             <uc2:BoreHoleTree ID="BoreHoleTree1" runat="server" />
+
             <div class="cls">
                 <input type="hidden" runat="server" id="hdnUserID" />
-                <input type="hidden" runat="server" id="hdnBoreHoleID" />
+                <input type="hidden" runat="server" id="hdnReportID" />
             </div>
             <script language="javascript" type="text/javascript" src="../Scripts/dailyreport.js"></script>
             <script language="javascript" type="text/javascript">
 
 
 
-                function PrintReport() {
-                    var From = $("[id$='txtDtFrom']").val();
-                    var To = $("[id$='txtDtTo']").val();
-                    var BoreHole = $("[id$='hdnBoreHoleID']").val();
-                    //return CallReport("MinMaxRpt", "&From=" + From + "&To=" + To + "&BoreHole=" + BoreHole); // + "&Sort=" + SortExp);
-                }
+                
 
             </script>
             <div class="cls">

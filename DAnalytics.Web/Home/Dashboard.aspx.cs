@@ -21,48 +21,13 @@ namespace DAnalytics.Web.Home
         {
             if (!IsPostBack)
             {
-                PopulateForm();
+                
             }
         }
 
         /// <summary>
         /// Method to populate dashboard form.
         /// </summary>
-        void PopulateForm()
-        {
-            try
-            {                
-                if (this.CurrentUser.UserRoleMappings != null && this.CurrentUser.UserRoleMappings.Count > 0)
-                {
-                     mStatus.Visible = true;                   
-                }                
-            }
-            catch { }
-        }
-
-        /// <summary>
-        /// Method to set staus fields.
-        /// </summary>
-        /// <param name="ds"></param>
-        void SetStatus(System.Data.DataSet ds)
-        {
-            if (ds != null && ds.Tables.Count > 0)
-            {
-                if (ds.Tables[0] != null && ds.Tables[0].Rows.Count > 0)
-                {
-                    System.Data.DataRow dr = ds.Tables[0].Rows[0];
-                    mUnAssTaskCount.InnerText = UTIL.DAnalHelper.ConvertToString(dr["UnAssigned"]);
-                    mOverDueTaskCount.InnerText = UTIL.DAnalHelper.ConvertToString(dr["OverDue"]);
-                    mCriticalTaskCount.InnerText = UTIL.DAnalHelper.ConvertToString(dr["Critical"]);
-                }
-                if (ds.Tables[1] != null && ds.Tables[1].Rows.Count > 0)
-                {
-                    System.Data.DataRow dr = ds.Tables[1].Rows[0];
-                    uAssTaskCount.InnerText = UTIL.DAnalHelper.ConvertToString(dr["Assigned"]);
-                    uOverDueTaskCount.InnerText = UTIL.DAnalHelper.ConvertToString(dr["OverDue"]);
-                    uCriticalTaskCount.InnerText = UTIL.DAnalHelper.ConvertToString(dr["Critical"]);
-                }
-            }
-        }       
+        
     }
 }

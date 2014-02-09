@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=4.0.3.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Newtonsoft.Json.dll</HintPath>
@@ -216,6 +217,8 @@
     <Content Include="Jquery\jquery_ui_datepicker\timepicker_plug\css\style.css" />
     <Content Include="Jquery\jquery_ui_datepicker\timepicker_plug\timepicker.js" />
     <Content Include="Report\Borehole.aspx" />
+    <Content Include="Report\dailyreportsurvey.aspx" />
+    <Content Include="Report\downloadreport.aspx" />
     <Content Include="Report\MinMaxSummary.aspx" />
     <Content Include="Report\OLDProj_ErrorRatio.aspx" />
     <Content Include="Report\OLDProj_MispronouncedReport.aspx" />
@@ -345,6 +348,20 @@
     </Compile>
     <Compile Include="Report\Borehole.aspx.designer.cs">
       <DependentUpon>Borehole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\dailyreportsurvey.aspx.cs">
+      <DependentUpon>dailyreportsurvey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\dailyreportsurvey.aspx.designer.cs">
+      <DependentUpon>dailyreportsurvey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\downloadreport.aspx.cs">
+      <DependentUpon>downloadreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\downloadreport.aspx.designer.cs">
+      <DependentUpon>downloadreport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\MinMaxSummary.aspx.cs">
       <DependentUpon>MinMaxSummary.aspx</DependentUpon>

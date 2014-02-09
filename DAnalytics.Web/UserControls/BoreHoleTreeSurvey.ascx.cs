@@ -96,5 +96,25 @@ namespace DAnalytics.Web.UserControls
         {
 
         }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnGenerate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnBack2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

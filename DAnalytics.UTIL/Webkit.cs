@@ -151,7 +151,12 @@ namespace DAnalytics.UTIL
                 writer.Close();
                 document.Close();
             }
+
+            
+
         }
+
+        
 
         void _File_OnProcessCompleted(WebkitFile _File)
         {
@@ -184,6 +189,43 @@ namespace DAnalytics.UTIL
             //        document.Close();
             //    }
             //}
+        }
+    }
+
+    public class PDFUtil
+    {
+        public string CombinePDF(List<string> _Files)
+        {
+            string _CombinedPDFPath = string.Empty;
+            if (_Files.Count > 0)
+            {
+                _CombinedPDFPath = Path.Combine(Path.GetDirectoryName(_Files[0]), "DR_" + DateTime.Now.ToString("ddMMHHmmss") + ".pdf");
+
+                Document document = new Document();
+                PdfCopy writer = new PdfCopy(document, new FileStream(_CombinedPDFPath, FileMode.Create, FileAccess.Write));
+                document.Open();
+
+                for (int iCount = 0; iCount < _Files.Count; iCount++)
+                {
+                    PdfReader reader = new PdfReader(_Files[iCount]);
+                    reader.ConsolidateNamedDestinations();
+
+                    for (int i = 1; i <= reader.NumberOfPages; i++)
+                    {
+                        PdfImportedPage pdfpage = writer.GetImportedPage(reader, i);
+                        writer.AddPage(pdfpage);
+                    }
+                    PRAcroForm form = reader.AcroForm;
+                    if (form != null)
+                    {
+                        writer.CopyAcroForm(reader);
+                    }
+                    reader.Close();
+                }
+                writer.Close();
+                document.Close();
+            }
+            return _CombinedPDFPath;
         }
     }
 }
