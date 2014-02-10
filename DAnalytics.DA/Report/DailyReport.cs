@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections.Generic;
 using DAnalytics.UTIL;
+using DAnalytics.MO;
 namespace DAnalytics.DA.Report
 {
     public class DailyReport
@@ -195,20 +196,23 @@ namespace DAnalytics.DA.Report
             return _lst;
         }
 
-        public static bool SaveParam(int ReportID, DataTable dt)
+        public static bool SaveParam(int ReportID, GenerateReportArgs args)
         {
             bool _IsSaved = false;
 
             SqlParameter[] sqlParams = new SqlParameter[]{
-                UTIL.SqlHelper.CreateParameter("@RptTable",dt,SqlDbType.Structured,ParameterDirection.Input),
-                UTIL.SqlHelper.CreateParameter("@ReportID",ReportID,SqlDbType.Date,ParameterDirection.Input)
+                UTIL.SqlHelper.CreateParameter("@RptTable",args.BoreHoleTable,SqlDbType.Structured,ParameterDirection.Input),
+                UTIL.SqlHelper.CreateParameter("@ReportID",ReportID,SqlDbType.Int,ParameterDirection.Input)
             };
             try
             {
                 UTIL.SqlHelper.ExecuteNonQuery(UTIL.DAnalHelper.ConnectionString, CommandType.StoredProcedure, "usp_DailyReportParam_Save", sqlParams);
                 _IsSaved = true;
+
+                SaveHeader(ReportID, args);
             }
-            catch {
+            catch
+            {
                 _IsSaved = false;
             }
             finally
@@ -218,5 +222,27 @@ namespace DAnalytics.DA.Report
 
             return _IsSaved;
         }
+
+        static void SaveHeader(int ReportID, GenerateReportArgs args)
+        {
+            SqlParameter[] sqlParams = new SqlParameter[]{
+                
+                UTIL.SqlHelper.CreateParameter("@ReportID",ReportID,SqlDbType.Int,ParameterDirection.Input),
+                UTIL.SqlHelper.CreateParameter("@ContractNo",args.ContractNo,SqlDbType.VarChar,ParameterDirection.Input),
+                UTIL.SqlHelper.CreateParameter("@PreparedName",args.PreparedName,SqlDbType.VarChar,ParameterDirection.Input),
+                UTIL.SqlHelper.CreateParameter("@PreparedDesig",args.PreparedDesig,SqlDbType.VarChar,ParameterDirection.Input)
+            };
+            try
+            {
+                UTIL.SqlHelper.ExecuteNonQuery(UTIL.DAnalHelper.ConnectionString, CommandType.StoredProcedure, "usp_DailyReport_SaveHeader", sqlParams);
+            }
+            finally
+            {
+                sqlParams = null;
+            }
+        }
     }
+
+
+
 }

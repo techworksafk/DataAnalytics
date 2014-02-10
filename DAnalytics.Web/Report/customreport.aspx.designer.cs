@@ -10,16 +10,16 @@
 namespace DAnalytics.Web.Report {
     
     
-    public partial class dailyreportsurvey {
+    public partial class customreport {
         
         /// <summary>
-        /// BoreHoleTreeSurvey1 control.
+        /// BoreHoleTree1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DAnalytics.Web.UserControls.BoreHoleTreeSurvey BoreHoleTreeSurvey1;
+        protected global::DAnalytics.Web.UserControls.BoreHoleTree BoreHoleTree1;
         
         /// <summary>
         /// hdnUserID control.
@@ -38,5 +38,23 @@ namespace DAnalytics.Web.Report {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnReportID;
+        
+        /// <summary>
+        /// gvBoreHoles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvBoreHoles;
+        
+        /// <summary>
+        /// GridPager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DAnalytics.UserControls.GridPager GridPager1;
     }
 }

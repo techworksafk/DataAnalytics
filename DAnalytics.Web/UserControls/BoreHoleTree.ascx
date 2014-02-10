@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BoreHoleTree.ascx.cs"
     Inherits="DAnalytics.Web.UserControls.BoreHoleTree" %>
 <div class="transcripts_details_header" id="divTreeDiv" runat="server" style="display: block;">
-    <div style="width: 100%; max-height: 400px; height: auto; overflow: auto;">
+    <div style="width: 98%; max-height: 500px; height: auto; overflow: auto;">
         <asp:TreeView ID="tvBoreHole" runat="server" ShowCheckBoxes="All" ShowExpandCollapse="true"
             ShowLines="true">
         </asp:TreeView>
@@ -21,7 +21,7 @@
     </div>
 </div>
 <div class="transcripts_details_header" id="divSelectionDiv" runat="server" style="display: none;">
-    <div class="template_head" style="width: 100%">
+    <div class="template_head" style="width: 98%">
         <%=SelectionTable %>
     </div>
     <div class="cls"></div>
@@ -30,9 +30,13 @@
         <label>
             Contract No:</label>
         <asp:TextBox ID="txtContractNo" runat="server" CssClass="input_text input_small"></asp:TextBox>
+         <label>
+            Prepare By:</label>
+        <asp:TextBox ID="txtPrepareName" runat="server" CssClass="input_text input_wide"
+            Width="500px"></asp:TextBox>
         <label>
-            Contract Title:</label>
-        <asp:TextBox ID="txtContractTitle" runat="server" CssClass="input_text input_wide"
+            Prepare Designation:</label>
+        <asp:TextBox ID="txtPrepareDesig" runat="server" CssClass="input_text input_wide"
             Width="500px"></asp:TextBox>
     </div>
     <div class="cls"></div>

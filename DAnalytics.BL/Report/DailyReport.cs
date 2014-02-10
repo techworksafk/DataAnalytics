@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Data;
 using System.Collections.Generic;
+using DAnalytics.MO;
 
 namespace DAnalytics.BL.Report
 {
     public class DailyReport
     {
-        public static bool SaveParam(int ReportID, DataTable dt)
+        public static bool SaveParam(int ReportID, GenerateReportArgs args)
         {
-            return DA.Report.DailyReport.SaveParam(ReportID, dt);
+            return DA.Report.DailyReport.SaveParam(ReportID, args);
         }
 
         public static DataSet GetMinMaxSummary(DataTable dt, DateTime? FromDate = null, DateTime? ToDate = null)

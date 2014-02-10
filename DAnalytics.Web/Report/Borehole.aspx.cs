@@ -10,6 +10,7 @@ using DAnalytics.Web.UserControls;
 using System.Web.UI;
 using System.IO;
 using System.Threading;
+using DAnalytics.MO;
 namespace DAnalytics.Web.Report
 {
     public partial class Borehole : BasePage.DAnalBase
@@ -43,7 +44,7 @@ namespace DAnalytics.Web.Report
 
         void BoreHoleTree1_OnGenerateReport(GenerateReportArgs args)
         {
-            BL.Report.DailyReport.SaveParam(hdnReportID.Value.ConvertToInt32(), args.BoreHoleTable);
+            BL.Report.DailyReport.SaveParam(hdnReportID.Value.ConvertToInt32(), args);
             _Files = new List<string>();
 
             Thread _trdMinMax = new Thread(new ThreadStart(delegate()
@@ -72,7 +73,6 @@ namespace DAnalytics.Web.Report
                 Response.TransmitFile(OPFile);
             }
         }
-
 
         private ReportViewer GetReportViewer()
         {
@@ -108,7 +108,6 @@ namespace DAnalytics.Web.Report
 
             DownloadReport(objViewer);
         }
-
 
         void GenerateBoreHole(GenerateReportArgs args)
         {

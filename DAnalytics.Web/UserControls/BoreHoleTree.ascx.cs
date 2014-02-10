@@ -5,20 +5,9 @@ using System.Globalization;
 using System.Text;
 using System.Web.UI.WebControls;
 using DAnalytics.UTIL;
+using DAnalytics.MO;
 namespace DAnalytics.Web.UserControls
 {
-
-    public class GenerateReportArgs
-    {
-        public DataTable BoreHoleTable { get; set; }
-
-        public DateTime? FromDate { get; set; }
-
-        public DateTime? ToDate { get; set; }
-
-        public bool DoAutoPick { get; set; }
-    }
-
     public delegate void GenerateReport(GenerateReportArgs args);
 
     public partial class BoreHoleTree : System.Web.UI.UserControl
@@ -83,11 +72,16 @@ namespace DAnalytics.Web.UserControls
 
             if (OnGenerateReport != null)
             {
-                GenerateReportArgs _args = new GenerateReportArgs ();
+                GenerateReportArgs _args = new GenerateReportArgs();
                 _args.FromDate = FromDate;
                 _args.ToDate = ToDate;
                 _args.BoreHoleTable = dt;
                 _args.DoAutoPick = false;
+
+                _args.ContractNo = txtContractNo.Text.Trim();
+                _args.PreparedName = txtPrepareName.Text.Trim();
+                _args.PreparedDesig = txtPrepareDesig.Text.Trim();
+
                 OnGenerateReport(_args);
             }
         }
@@ -101,15 +95,24 @@ namespace DAnalytics.Web.UserControls
 
         DataTable dt;
 
-        StringBuilder _area = new StringBuilder();
-        StringBuilder _loop = new StringBuilder();
-        StringBuilder _borehole = new StringBuilder();
+        int _CurrentLoopID = 0, _CurrentAreaID = 0;
+        List<StringBuilder> _Selections = new List<StringBuilder>();
+        StringBuilder _CurrentSelection;
 
         StringBuilder _SelectionTable = new StringBuilder();
 
         public string SelectionTable
         {
-            get { return _SelectionTable.ToString(); }
+            get
+            {
+                _SelectionTable.Append("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"1\">");
+                foreach (StringBuilder _sb in _Selections)
+                {
+                    _SelectionTable.Append("<tr><td width=\"100%\">").Append(_sb.ToString()).Append("</td></tr>");
+                }
+                _SelectionTable.Append("</table>");
+                return _SelectionTable.ToString();
+            }
         }
 
         DateTime? _FromDate = null, _ToDate = null;
@@ -150,14 +153,6 @@ namespace DAnalytics.Web.UserControls
                 GetChildSelections(_node, _node.Checked);
             }
 
-            _SelectionTable.Append("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"1\">");
-            if (_area.ToString().Length > 0)
-                _SelectionTable.Append("<tr><td width=\"10%\">Area<td><td width=\"90%\">").Append(_area.ToString()).Append("</td></tr>");
-            if (_loop.ToString().Length > 0)
-                _SelectionTable.Append("<tr><td width=\"10%\">Loop<td><td width=\"90%\">").Append(_loop.ToString()).Append("</td></tr>");
-            if (_borehole.ToString().Length > 0)
-                _SelectionTable.Append("<tr><td width=\"10%\">Borehole<td><td width=\"90%\">").Append(_borehole.ToString()).Append("</td></tr>");
-            _SelectionTable.Append("</table>");
         }
 
 
@@ -175,14 +170,31 @@ namespace DAnalytics.Web.UserControls
         {
             switch (_node.ToolTip.ToLower())
             {
-                case "area":
-                    if (_area.ToString().Length > 0) _area.Append(",").Append(_node.Text); else _area.Append(_node.Text);
-                    break;
-                case "loop":
-                    if (_loop.ToString().Length > 0) _loop.Append(",").Append(_node.Text); else _loop.Append(_node.Text);
-                    break;
                 case "borehole":
-                    if (_borehole.ToString().Length > 0) _borehole.Append(",").Append(_node.Text); else _borehole.Append(_node.Text);
+
+                    if (
+                       _CurrentLoopID != _node.Parent.Value.ConvertToInt32() ||
+                       _CurrentAreaID != _node.Parent.Parent.Value.ConvertToInt32())
+                    {
+                        _CurrentLoopID = _node.Parent.Value.ConvertToInt32();
+                        _CurrentAreaID = _node.Parent.Parent.Value.ConvertToInt32();
+
+                        if (_CurrentSelection != null)
+                        {
+                            if (_CurrentSelection.ToString().EndsWith(","))
+                                _CurrentSelection.Remove(_CurrentSelection.ToString().Length - 1, 1);
+                            _CurrentSelection.Append(" ]");
+                            _Selections.Add(_CurrentSelection);
+                        }
+
+                        _CurrentSelection = new StringBuilder();
+                        _CurrentSelection.Append(_node.Parent.Parent.Text)
+                            .Append("->").Append(_node.Parent.Text).Append(" [");
+                    }
+
+                    _CurrentSelection.Append(_node.Text).Append(",");
+
+
                     if (GenerateDataTable)
                     {
                         DataRow dr = dt.NewRow();

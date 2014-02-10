@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BoreHoleTreeSurvey.ascx.cs"
     Inherits="DAnalytics.Web.UserControls.BoreHoleTreeSurvey" %>
 <div class="transcripts_details_header" id="divStep1" runat="server" style="display: block;">
-    <div style="width: 300px; height: 500px;" class="inner_float_div">
+    <div style="width: 98%;" class="inner_float_div">
         <label>
             Year:</label><asp:DropDownList ID="ddlYear" runat="server">
             </asp:DropDownList>
@@ -14,11 +14,12 @@
     </div>
 </div>
 <div class="transcripts_details_header" id="divTree" runat="server" style="display: block;">
-    <div style="width: 300px; height: 500px;" class="inner_float_div">
+    <div style="width: 98%; max-height: 500px; height: auto; overflow: auto;" class="inner_float_div">
         <asp:TreeView ID="tvBoreHole" runat="server" ShowCheckBoxes="All" ShowExpandCollapse="true"
             ShowLines="true">
         </asp:TreeView>
     </div>
+    <br />
     <div class="multi_row_elements">
         <asp:CheckBox ID="chkAutoPick" runat="server" Text="Autopick" />
         <label>
@@ -36,7 +37,7 @@
     </div>
 </div>
 <div class="transcripts_details_header" id="divSelectionDiv" runat="server" style="display: block;">
-    <div class="template_head" style="width: 100%">
+    <div class="template_head" style="width: 98%">
         <%=SelectionTable %>
     </div>
     <div class="cls">
@@ -47,16 +48,19 @@
             Contract No:</label>
         <asp:TextBox ID="txtContractNo" runat="server" CssClass="input_text input_small"></asp:TextBox>
         <label>
-            Contract Title:</label>
-        <asp:TextBox ID="txtContractTitle" runat="server" CssClass="input_text input_wide"
+            Prepare By:</label>
+        <asp:TextBox ID="txtPrepareName" runat="server" CssClass="input_text input_wide"
+            Width="500px"></asp:TextBox>
+        <label>
+            Prepare Designation:</label>
+        <asp:TextBox ID="txtPrepareDesig" runat="server" CssClass="input_text input_wide"
             Width="500px"></asp:TextBox>
     </div>
     <div class="cls">
     </div>
     <div class="button_holder">
         <asp:Button ID="btnGenerate" runat="server" CommandName="Print" Text="Generate" OnClick="btnGenerate_Click" />
-        <asp:Button ID="btnBack2" runat="server" CommandName="Print" Text="Back" 
-            onclick="btnBack2_Click" />
+        <asp:Button ID="btnBack2" runat="server" CommandName="Print" Text="Back" OnClick="btnBack2_Click" />
     </div>
 </div>
 <input type="hidden" id="hdnGenerateReport" />

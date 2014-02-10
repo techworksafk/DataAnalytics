@@ -5364,6 +5364,9 @@
                 <GroupExpressions>
                   <GroupExpression>=Fields!BoreHoleID.Value</GroupExpression>
                 </GroupExpressions>
+                <PageBreak>
+                  <BreakLocation>Between</BreakLocation>
+                </PageBreak>
               </Group>
               <SortExpressions>
                 <SortExpression>

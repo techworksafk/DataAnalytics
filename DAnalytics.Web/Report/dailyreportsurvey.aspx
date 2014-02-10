@@ -11,7 +11,7 @@
             <uc1:BoreHoleTreeSurvey ID="BoreHoleTreeSurvey1" runat="server" />
             <div class="cls">
                 <input type="hidden" runat="server" id="hdnUserID" />
-                <input type="hidden" runat="server" id="hdnBoreHoleID" />
+                <input type="hidden" runat="server" id="hdnReportID" />
             </div>
             <script language="javascript" type="text/javascript" src="../Scripts/dailyreport.js"></script>
             <script language="javascript" type="text/javascript">

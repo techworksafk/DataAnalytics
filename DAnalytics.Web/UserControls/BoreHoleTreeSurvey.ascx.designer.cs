@@ -130,13 +130,22 @@ namespace DAnalytics.Web.UserControls {
         protected global::System.Web.UI.WebControls.TextBox txtContractNo;
         
         /// <summary>
-        /// txtContractTitle control.
+        /// txtPrepareName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContractTitle;
+        protected global::System.Web.UI.WebControls.TextBox txtPrepareName;
+        
+        /// <summary>
+        /// txtPrepareDesig control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPrepareDesig;
         
         /// <summary>
         /// btnGenerate control.

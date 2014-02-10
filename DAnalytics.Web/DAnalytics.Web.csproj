@@ -217,6 +217,7 @@
     <Content Include="Jquery\jquery_ui_datepicker\timepicker_plug\css\style.css" />
     <Content Include="Jquery\jquery_ui_datepicker\timepicker_plug\timepicker.js" />
     <Content Include="Report\Borehole.aspx" />
+    <Content Include="Report\customreport.aspx" />
     <Content Include="Report\dailyreportsurvey.aspx" />
     <Content Include="Report\downloadreport.aspx" />
     <Content Include="Report\MinMaxSummary.aspx" />
@@ -243,11 +244,13 @@
     <Content Include="template\tmpl_DailyReport.htm" />
     <Content Include="template\tmpl_DailyReportConsolidated.htm" />
     <Content Include="template\tmpl_MinMaxTable.ascx" />
+    <Content Include="UserControls\BoreHoleAllChart.ascx" />
     <Content Include="UserControls\BoreHoleChart.ascx" />
     <Content Include="UserControls\BoreHoleTree.ascx" />
     <Content Include="UserControls\BoreHoleTreeSurvey.ascx" />
     <Content Include="UserControls\GridPager.ascx" />
     <Content Include="ajax\autocompleter.ashx" />
+    <Content Include="ajax\dataanalytics.ashx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -291,6 +294,9 @@
     </Compile>
     <Compile Include="ajax\autocompleter.ashx.cs">
       <DependentUpon>autocompleter.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajax\dataanalytics.ashx.cs">
+      <DependentUpon>dataanalytics.ashx</DependentUpon>
     </Compile>
     <Compile Include="ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
@@ -348,6 +354,13 @@
     </Compile>
     <Compile Include="Report\Borehole.aspx.designer.cs">
       <DependentUpon>Borehole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Report\customreport.aspx.cs">
+      <DependentUpon>customreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\customreport.aspx.designer.cs">
+      <DependentUpon>customreport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Report\dailyreportsurvey.aspx.cs">
       <DependentUpon>dailyreportsurvey.aspx</DependentUpon>
@@ -442,6 +455,13 @@
     </Compile>
     <Compile Include="template\tmpl_MinMaxTable.ascx.designer.cs">
       <DependentUpon>tmpl_MinMaxTable.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BoreHoleAllChart.ascx.cs">
+      <DependentUpon>BoreHoleAllChart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\BoreHoleAllChart.ascx.designer.cs">
+      <DependentUpon>BoreHoleAllChart.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\BoreHoleChart.ascx.cs">
       <DependentUpon>BoreHoleChart.ascx</DependentUpon>
