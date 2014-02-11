@@ -27,8 +27,16 @@ namespace DAnalytics.Web.ajax
         void BoreHoleCustomReport(HttpContext context)
         {
             int BoreHoleID = context.Request.QueryString["bhid"].ConvertToInt32();
+            DateTime? _from = null;
+            DateTime? _to = null;
 
-            DataSet ds = BL.Report.CustomReport.GetBoreholeReport(BoreHoleID, null, null);
+            if (Convert.ToString(context.Request.QueryString["from"]).Length > 0)
+                _from = Convert.ToDateTime(context.Request.QueryString["from"]);
+
+            if (Convert.ToString(context.Request.QueryString["to"]).Length > 0)
+                _to = Convert.ToDateTime(context.Request.QueryString["to"]);
+
+            DataSet ds = BL.Report.CustomReport.GetBoreholeReport(BoreHoleID, _from, _to);
 
             if (ds != null && ds.Tables[0].Rows.Count > 0)
             {
@@ -42,63 +50,75 @@ namespace DAnalytics.Web.ajax
                 _Chart.Append("},");
 
                 _Chart.Append(" \"CH4\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["CH4Color"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [CH4Series]");
+                _Chart.Append(" \"name\" : \"CH4\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["CH4Color"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [CH4Series]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"CO2\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["CO2Color"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [CO2Series]");
+                _Chart.Append(" \"name\" : \"CO2\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["CO2Color"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [CO2Series]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"O2\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["O2Color"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [O2Series]");
+                _Chart.Append(" \"name\" : \"O2\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["O2Color"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [O2Series]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"VOC\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["VOCColor"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [VOCSeries]");
+                _Chart.Append(" \"name\" : \"VOC\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["VOCColor"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [VOCSeries]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"H2S\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["H2SColor"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [H2SSeries]");
+                _Chart.Append(" \"name\" : \"H2S\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["H2SColor"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [H2SSeries]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"CO\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["COColor"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [COSeries]");
+                _Chart.Append(" \"name\" : \"CO\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["COColor"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [COSeries]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"Borehole_Pressure\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["Borehole_PressureColor"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [Borehole_PressureSeries]");
+                _Chart.Append(" \"name\" : \"Borehole Pressure\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["Borehole_PressureColor"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [Borehole_PressureSeries]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"Atmospheric_Pressure\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["Atmospheric_PressureColor"].ToString()).Append("\",");
+                _Chart.Append(" \"name\" : \"Atmospheric Pressure\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["Atmospheric_PressureColor"].ToString()).Append("\",");
                 _Chart.Append(" \"Series\" : [Atmospheric_PressureSeries]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"Pressure_Diff\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["Pressure_DiffColor"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [Pressure_DiffSeries]");
+                _Chart.Append(" \"name\" : \"Pressure Diff\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["Pressure_DiffColor"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [Pressure_DiffSeries]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"Temperature\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["TemperatureColor"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [TemperatureSeries]");
+                _Chart.Append(" \"name\" : \"Temperature\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["TemperatureColor"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [TemperatureSeries]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"Water_Level\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["Water_LevelColor"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [Water_LevelSeries]");
+                _Chart.Append(" \"name\" : \"Water Level\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["Water_LevelColor"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [Water_LevelSeries]");
                 _Chart.Append("},");
 
                 _Chart.Append(" \"Battery\" : {");
-                //_Chart.Append(" Color : \"").Append(ds.Tables[0].Rows[0]["BatteryColor"].ToString()).Append("\",");
-                _Chart.Append(" \"Series\" : [BatterySeries]");
+                _Chart.Append(" \"name\" : \"Battery\",");
+                //_Chart.Append(" color : \"").Append(ds.Tables[0].Rows[0]["BatteryColor"].ToString()).Append("\",");
+                _Chart.Append(" \"data\" : [BatterySeries]");
                 _Chart.Append("}");
 
                 _Chart.Append(" }}");
@@ -121,19 +141,30 @@ namespace DAnalytics.Web.ajax
                 for (int iRow = 0; iRow < ds.Tables[0].Rows.Count; iRow++)
                 {
                     DataRow dr = ds.Tables[0].Rows[iRow];
-                    _Category.Append("\"").Append(String.Format("{0:dd-MM-yy HH:mm}", Convert.ToString(dr["ReadingDateTime"]))).Append("\"");
-                    _CH4.Append(Convert.ToString(dr["CH4"]));
-                    _CO2.Append(Convert.ToString(dr["CO2"]));
-                    _O2.Append(Convert.ToString(dr["O2"]));
-                    _VOC.Append(Convert.ToString(dr["VOC"]));
-                    _H2S.Append(Convert.ToString(dr["H2S"]));
-                    _CO.Append(Convert.ToString(dr["CO"]));
-                    _Borehole_Pressure.Append(Convert.ToString(dr["Borehole_Pressure"]));
-                    _Atmospheric_Pressure.Append(Convert.ToString(dr["Atmospheric_Pressure"]));
-                    _Pressure_Diff.Append(Convert.ToString(dr["Pressure_Diff"]));
-                    _Temperature.Append(Convert.ToString(dr["Temperature"]));
-                    _Water_Level.Append(Convert.ToString(dr["Water_Level"]));
-                    _Battery.Append(Convert.ToString(dr["Battery"]));
+
+                    string _xAxis = Convert.ToDateTime(dr["ReadingDateTime"]).ToUnixTimestamp().ToString();
+                    _Category.Append(_xAxis);
+
+                    _CH4.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["CH4"])).Append("]");
+                    _CO2.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["CO2"])).Append("]");
+                    _O2.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["O2"])).Append("]");
+                    _VOC.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["VOC"])).Append("]");
+                    _H2S.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["H2S"])).Append("]");
+                    _CO.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["CO"])).Append("]");
+                    _Borehole_Pressure.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["Borehole_Pressure"])).Append("]");
+                    _Atmospheric_Pressure.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["Atmospheric_Pressure"])).Append("]");
+                    _Pressure_Diff.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["Pressure_Diff"])).Append("]");
+                    _Temperature.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["Temperature"])).Append("]");
+                    _Water_Level.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["Water_Level"])).Append("]");
+                    _Battery.Append("[").Append(_xAxis).Append(",").Append(Convert.ToString(dr["Battery"])).Append("]");
+
+                    //_CO.Append(Convert.ToString(dr["CO"]));
+                    //_Borehole_Pressure.Append(Convert.ToString(dr["Borehole_Pressure"]));
+                    //_Atmospheric_Pressure.Append(Convert.ToString(dr["Atmospheric_Pressure"]));
+                    //_Pressure_Diff.Append(Convert.ToString(dr["Pressure_Diff"]));
+                    //_Temperature.Append(Convert.ToString(dr["Temperature"]));
+                    //_Water_Level.Append(Convert.ToString(dr["Water_Level"]));
+                    //_Battery.Append(Convert.ToString(dr["Battery"]));
 
                     if (iRow != ds.Tables[0].Rows.Count - 1)
                     {
@@ -166,9 +197,6 @@ namespace DAnalytics.Web.ajax
                 _Chart.Replace("TemperatureSeries", _Temperature.ToString());
                 _Chart.Replace("Water_LevelSeries", _Water_Level.ToString());
                 _Chart.Replace("BatterySeries", _Battery.ToString());
-                _Chart.Replace("CategorySeries", _Category.ToString());
-                _Chart.Replace("CategorySeries", _Category.ToString());
-                _Chart.Replace("CategorySeries", _Category.ToString());
 
                 context.Response.Write(_Chart.ToString());
             }

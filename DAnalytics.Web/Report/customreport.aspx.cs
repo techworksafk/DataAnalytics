@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using DAnalytics.MO;
 using DAnalytics.UTIL;
 using System.Data;
+using DAnalytics.Web.UserControls;
 namespace DAnalytics.Web.Report
 {
     public partial class customreport : BasePage.DAnalBase
@@ -23,13 +24,30 @@ namespace DAnalytics.Web.Report
             }
 
             BoreHoleTree1.OnGenerateReport += new UserControls.GenerateReport(BoreHoleTree1_OnGenerateReport);
-            GridPager1.GridPagerChanged += new DAnalytics.UserControls.GridPagerChangedEventHandler(GridPager1_GridPagerChanged);
+            BoreHoleTree1.OnNavigate += new UserControls.Navigate(BoreHoleTree1_OnNavigate);
+            GridViewPager1.OnGridViewPagerChange += new UserControls.GridViewPagerChange(GridViewPager1_OnGridViewPagerChange);
         }
 
-        void GridPager1_GridPagerChanged(object sender, DAnalytics.UserControls.GridPagerChangedEventArgs e)
+        protected override void OnPreRender(EventArgs e)
         {
-            BindGrid(e.CurrentPage);
+            GridViewPager1.Visible = gvBoreHoles.Rows.Count > 0;
+            base.OnPreRender(e);
         }
+
+        void GridViewPager1_OnGridViewPagerChange()
+        {
+            BindGrid(GridViewPager1.CurrentPageNumber);
+        }
+
+        void BoreHoleTree1_OnNavigate(UserControls.NavigateAction Action)
+        {
+            if (Action == UserControls.NavigateAction.Backward)
+            {
+                gvBoreHoles.DataSource = null;
+                gvBoreHoles.DataBind();
+            }
+        }
+
 
         void BoreHoleTree1_OnGenerateReport(GenerateReportArgs args)
         {
@@ -44,11 +62,17 @@ namespace DAnalytics.Web.Report
             gvBoreHoles.DataSource = ds;
             gvBoreHoles.DataBind();
 
-            GridPager1.ControlToBind = "gvBoreHoles";
-            GridPager1.TotalPages = ds != null && ds.Tables[0].Rows.Count > 0 ? ds.Tables[0].Rows[0]["TotalPages"].ConvertToInt32() : 0;
-            GridPager1.Bind();
+            GridViewPager1.TotalPages = ds != null && ds.Tables[0].Rows.Count > 0 ? ds.Tables[0].Rows[0]["TotalPages"].ConvertToInt32() : 1;
+        }
 
-            GridPager1.Visible = ds != null && ds.Tables[0].Rows.Count > 0;
+        protected void gvBoreHoles_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                BoreHoleAllChart BoreHoleAllChart1 = e.Row.FindControl("BoreHoleAllChart1") as BoreHoleAllChart;
+                BoreHoleAllChart1.FromDate = BoreHoleTree1.FromDate.HasValue? BoreHoleTree1.FromDate.Value.ToString("MM/dd/yyyy"):"";
+                BoreHoleAllChart1.ToDate = BoreHoleTree1.ToDate.HasValue ? BoreHoleTree1.ToDate.Value.ToString("MM/dd/yyyy") : "";
+            }
         }
     }
 }

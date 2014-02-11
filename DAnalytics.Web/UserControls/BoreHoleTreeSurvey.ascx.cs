@@ -39,14 +39,7 @@ namespace DAnalytics.Web.UserControls
         {
             get
             {
-                _SelectionTable.Append("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"1\">");
-                foreach (StringBuilder _sb in _Selections)
-                {
-                    _SelectionTable.Append("<tr><td width=\"100%\">").Append(_sb.ToString()).Append("</td></tr>");
-                }
-                _SelectionTable.Append("</table>");
-
-                return _SelectionTable.ToString();
+                return Server.HtmlDecode(hdnSelectionTable.Value);
             }
         }
 
@@ -157,6 +150,22 @@ namespace DAnalytics.Web.UserControls
 
                 GetChildSelections(_node, _node.Checked);
             }
+
+            if (_CurrentSelection != null)
+            {
+                if (_CurrentSelection.ToString().EndsWith(","))
+                    _CurrentSelection.Remove(_CurrentSelection.ToString().Length - 1, 1);
+                _CurrentSelection.Append(" ]");
+                _Selections.Add(_CurrentSelection);
+            }
+
+            _SelectionTable.Append("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"1\">");
+            foreach (StringBuilder _sb in _Selections)
+            {
+                _SelectionTable.Append("<tr><td width=\"100%\">").Append(_sb.ToString()).Append("</td></tr>");
+            }
+            _SelectionTable.Append("</table>");
+            hdnSelectionTable.Value = Server.HtmlEncode(_SelectionTable.ToString());
         }
 
         void GetChildSelections(TreeNode _node, bool IsRootChecked)

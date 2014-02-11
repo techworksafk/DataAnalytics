@@ -14,8 +14,8 @@
             Date To:</label>
         <asp:TextBox ID="txtDtTo" runat="server" CssClass="input_text input_small"></asp:TextBox>
     </div>
-    <div class="cls"></div>
-    
+    <div class="cls">
+    </div>
     <div class="button_holder">
         <asp:Button ID="btnView" runat="server" CommandName="Print" Text="View" OnClick="btnView_Click" />
     </div>
@@ -24,13 +24,16 @@
     <div class="template_head" style="width: 98%">
         <%=SelectionTable %>
     </div>
-    <div class="cls"></div>
+    <div class="cls">
+    </div>
     <br />
+    <%if (!IsCustomReport)
+      { %>
     <div class="multi_row_elements">
         <label>
             Contract No:</label>
         <asp:TextBox ID="txtContractNo" runat="server" CssClass="input_text input_small"></asp:TextBox>
-         <label>
+        <label>
             Prepare By:</label>
         <asp:TextBox ID="txtPrepareName" runat="server" CssClass="input_text input_wide"
             Width="500px"></asp:TextBox>
@@ -39,12 +42,16 @@
         <asp:TextBox ID="txtPrepareDesig" runat="server" CssClass="input_text input_wide"
             Width="500px"></asp:TextBox>
     </div>
-    <div class="cls"></div>
+    <div class="cls">
+    </div>
+    <%} %>
     <div class="button_holder">
         <asp:Button ID="btnGenerate" runat="server" CommandName="Print" Text="Generate" OnClick="btnGenerate_Click" />
         <asp:Button ID="btnBack" runat="server" CommandName="Print" Text="Back" OnClick="btnBack_Click" />
     </div>
 </div>
+<input type="hidden" id="hdnIsCustomReport" runat="server" value="0" />
+<input type="hidden" id="hdnSelectionTable" runat="server" />
 <script type="text/javascript">
     $(function () {
         $("[id$='tvBoreHole'] input[type=checkbox]").click(function () {

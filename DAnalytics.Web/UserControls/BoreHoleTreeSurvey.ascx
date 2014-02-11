@@ -64,6 +64,7 @@
     </div>
 </div>
 <input type="hidden" id="hdnGenerateReport" />
+<input type="hidden" id="hdnSelectionTable" runat="server" />
 <script type="text/javascript">
     $(function () {
         $("[id$='tvBoreHole'] input[type=checkbox]").click(function () {

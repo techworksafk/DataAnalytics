@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="float_div_right_wide">
         <div class="inner_content_holder">
-            <uc2:BoreHoleTree ID="BoreHoleTree1" runat="server" />
+            <uc2:BoreHoleTree ID="BoreHoleTree1" runat="server" IsCustomReport="false" />
 
             <div class="cls">
                 <input type="hidden" runat="server" id="hdnUserID" />

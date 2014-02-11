@@ -8,11 +8,24 @@ using DAnalytics.UTIL;
 using DAnalytics.MO;
 namespace DAnalytics.Web.UserControls
 {
+    public enum NavigateAction{ Forward,Backward}
+
     public delegate void GenerateReport(GenerateReportArgs args);
+
+    public delegate void Navigate(NavigateAction Action); 
 
     public partial class BoreHoleTree : System.Web.UI.UserControl
     {
         public event GenerateReport OnGenerateReport;
+
+        public event Navigate OnNavigate;
+
+        public bool IsCustomReport
+        {
+            get { return Convert.ToBoolean(hdnIsCustomReport.Value); }
+            set { hdnIsCustomReport.Value = value.ToString(); }
+        }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -63,6 +76,9 @@ namespace DAnalytics.Web.UserControls
             divTreeDiv.Style["display"] = "none";
             divSelectionDiv.Style["display"] = "block";
             GetSelections();
+
+            if (OnNavigate != null)
+                OnNavigate(NavigateAction.Forward);
         }
 
         protected void btnGenerate_Click(object sender, EventArgs e)
@@ -90,6 +106,10 @@ namespace DAnalytics.Web.UserControls
         {
             divTreeDiv.Style["display"] = "block";
             divSelectionDiv.Style["display"] = "none";
+
+
+            if (OnNavigate != null)
+                OnNavigate(NavigateAction.Backward);
         }
 
 
@@ -105,13 +125,8 @@ namespace DAnalytics.Web.UserControls
         {
             get
             {
-                _SelectionTable.Append("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"1\">");
-                foreach (StringBuilder _sb in _Selections)
-                {
-                    _SelectionTable.Append("<tr><td width=\"100%\">").Append(_sb.ToString()).Append("</td></tr>");
-                }
-                _SelectionTable.Append("</table>");
-                return _SelectionTable.ToString();
+                
+                return Server.HtmlDecode( hdnSelectionTable.Value);
             }
         }
 
@@ -153,6 +168,22 @@ namespace DAnalytics.Web.UserControls
                 GetChildSelections(_node, _node.Checked);
             }
 
+
+            if (_CurrentSelection != null)
+            {
+                if (_CurrentSelection.ToString().EndsWith(","))
+                    _CurrentSelection.Remove(_CurrentSelection.ToString().Length - 1, 1);
+                _CurrentSelection.Append(" ]");
+                _Selections.Add(_CurrentSelection);
+            }
+
+            _SelectionTable.Append("<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"1\">");
+            foreach (StringBuilder _sb in _Selections)
+            {
+                _SelectionTable.Append("<tr><td width=\"100%\">").Append(_sb.ToString()).Append("</td></tr>");
+            }
+            _SelectionTable.Append("</table>");
+            hdnSelectionTable.Value = Server.HtmlEncode( _SelectionTable.ToString());
         }
 
 

@@ -9,6 +9,10 @@ namespace DAnalytics.Web.UserControls
 {
     public partial class BoreHoleAllChart : System.Web.UI.UserControl
     {
+        public string Depth { get; set; }
+
+        public string BoreHoleName { get; set; }
+
         public int BoreHoleID { get; set; }
 
         public string FromDate { get; set; }

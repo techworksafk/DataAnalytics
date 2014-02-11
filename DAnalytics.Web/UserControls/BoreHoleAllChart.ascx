@@ -1,5 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BoreHoleAllChart.ascx.cs"
     Inherits="DAnalytics.Web.UserControls.BoreHoleAllChart" %>
+<h1>
+    <%=this.BoreHoleName + " [Depth:" + this.Depth + "]" %></h1>
 <div id="hc_Container" runat="server" style="height: 500px; width: 100%">
 </div>
 <script language="javascript" type="text/javascript">
@@ -14,120 +16,60 @@
             dataType: "json",
             data:
             {
-                bhid: <%=this.BoreHoleID %>
-                //from:"<%=this.FromDate %>",
-                //to:"<%=this.ToDate %>"
+                bhid: <%=this.BoreHoleID %>,
+                from:"<%=this.FromDate %>",
+                to:"<%=this.ToDate %>"
             },
             success: function (data) {
-                $("#<%=hc_Container.ClientID %>").highcharts({
+
+                data.Chart.CH4.yAxis = "GasAttributes";
+                data.Chart.CO2.yAxis = "GasAttributes";
+                data.Chart.O2.yAxis = "GasAttributes";
+                data.Chart.VOC.yAxis = "GasAttributes";
+                data.Chart.H2S.yAxis = "GasAttributes";
+                data.Chart.CO.yAxis = "GasAttributes";
+                data.Chart.Borehole_Pressure.yAxis = "PressureAttributes";
+                data.Chart.Atmospheric_Pressure.yAxis = "PressureAttributes";
+                data.Chart.Pressure_Diff.yAxis = "PressureAttributes";
+                data.Chart.Temperature.yAxis = "Temperature";
+                data.Chart.Water_Level.yAxis = "WaterLevel";
+                data.Chart.Battery.yAxis = "Battery";
+
+               $("#<%=hc_Container.ClientID %>").highcharts("StockChart",{
                     chart: { zoomType: 'xy' },
                     title: { text: data.Chart.BoreHoleName },
                     subtitle: { text: 'Borehole Custom Report' },
-                    xAxis: [{
-                        categories: data.Chart.Category.Series
-                    }],
-                    yAxis: [{ // Primary yAxis
-                        labels: {
-                            formatter: function () {
-                                return this.value + 'nm';
-                            },
-                            style: {
-                                color: '#89A54E'
-                            }
-                        },
-                        title: {
-                            text: 'CH4',
-                            style: {
-                                color: '#89A54E'
-                            }
-                        },
-                        opposite: true
-
-                    }, { // Secondary yAxis
-                        gridLineWidth: 0,
-                        title: {
-                            text: 'CO2',
-                            style: {
-                                color: '#4572A7'
-                            }
-                        },
-                        labels: {
-                            formatter: function () {
-                                return this.value + ' nm';
-                            },
-                            style: {
-                                color: '#4572A7'
-                            }
-                        }
-
-                    }, { // Tertiary yAxis
-                        gridLineWidth: 0,
-                        title: {
-                            text: 'CO',
-                            style: {
-                                color: '#AA4643'
-                            }
-                        },
-                        labels: {
-                            formatter: function () {
-                                return this.value + ' nm';
-                            },
-                            style: {
-                                color: '#AA4643'
-                            }
-                        },
-                        opposite: true
-                    }],
+                    yAxis:[YAxisGasAttributes,YAxisPressure,YAxisWater,YAxisTemperature,YAxisBattery],
                     tooltip: {
                         shared: true
                     },
-                    legend: {
-                        layout: 'vertical',
-                        align: 'left',
-                        x: 120,
-                        verticalAlign: 'top',
-                        y: 80,
-                        floating: true,
-                        backgroundColor: '#FFFFFF'
-                    },
-                    series: [{
-                        name: 'CH4',
-                        color: '#4572A7',
-                        type: 'spline',
-                        yAxis: 0,
-                        data: data.Chart.CH4.Series,
-                        tooltip: {
-                            valueSuffix: ' nm'
-                        }
+                     legend: {
+	    	            enabled: true,
+	    	            align: 'right',
+        	            backgroundColor: '#FCFFC5',
+        	            borderColor: 'black',
+        	            borderWidth: 2,
+	    	            layout: 'vertical',
+	    	            verticalAlign: 'top',
+	    	            y: 100,
+	    	            shadow: true
+	                },
+                    series:[data.Chart.CH4,data.Chart.CO2,data.Chart.O2,data.Chart.VOC,data.Chart.H2S
+                    
+                    ,data.Chart.CO
+                    ,data.Chart.Borehole_Pressure
+                    ,data.Chart.Atmospheric_Pressure
+                    ,data.Chart.Pressure_Diff
+                    ,data.Chart.Temperature
+                    ,data.Chart.Water_Level
+                    ,data.Chart.Battery
+                    ]
+                    });
 
-                    }, {
-                        name: 'CO2',
-                        type: 'spline',
-                        color: '#AA4643',
-                        yAxis: 1,
-                        data: data.Chart.CO2.Series,
-                        marker: {
-                            enabled: false
-                        },
-                        dashStyle: 'shortdot',
-                        tooltip: {
-                            valueSuffix: ' nm'
-                        }
-
-                    }, {
-                        name: 'CO',
-                        color: '#89A54E',
-                        yAxis: 2,
-                        type: 'spline',
-                        data: data.Chart.CO.Series,
-                        tooltip: {
-                            valueSuffix: ' nm'
-                        }
-                    }]
-                });
             },
             error: function (ex) {
-             
+             $("#<%=hc_Container.ClientID %>").html("No records to display");
+              $("#<%=hc_Container.ClientID %>").css("height","20px");
             }
         });
 

@@ -10,123 +10,87 @@
 namespace DAnalytics.Web.UserControls {
     
     
-    public partial class BoreHoleTree {
+    public partial class GridViewPager {
         
         /// <summary>
-        /// divTreeDiv control.
+        /// lnkFirst control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divTreeDiv;
+        protected global::System.Web.UI.WebControls.LinkButton lnkFirst;
         
         /// <summary>
-        /// tvBoreHole control.
+        /// lnkPrevious control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView tvBoreHole;
+        protected global::System.Web.UI.WebControls.LinkButton lnkPrevious;
         
         /// <summary>
-        /// txtDtFrom control.
+        /// txtPageNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDtFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtPageNumber;
         
         /// <summary>
-        /// txtDtTo control.
+        /// lblTotalPages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDtTo;
+        protected global::System.Web.UI.WebControls.Label lblTotalPages;
         
         /// <summary>
-        /// btnView control.
+        /// lnkNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnView;
+        protected global::System.Web.UI.WebControls.LinkButton lnkNext;
         
         /// <summary>
-        /// divSelectionDiv control.
+        /// lnkLast control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSelectionDiv;
+        protected global::System.Web.UI.WebControls.LinkButton lnkLast;
         
         /// <summary>
-        /// txtContractNo control.
+        /// btnChangePage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContractNo;
+        protected global::System.Web.UI.WebControls.Button btnChangePage;
         
         /// <summary>
-        /// txtPrepareName control.
+        /// hdnPageNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrepareName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnPageNumber;
         
         /// <summary>
-        /// txtPrepareDesig control.
+        /// hdnTotalPages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPrepareDesig;
-        
-        /// <summary>
-        /// btnGenerate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGenerate;
-        
-        /// <summary>
-        /// btnBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBack;
-        
-        /// <summary>
-        /// hdnIsCustomReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnIsCustomReport;
-        
-        /// <summary>
-        /// hdnSelectionTable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnSelectionTable;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnTotalPages;
     }
 }

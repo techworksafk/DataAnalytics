@@ -21,6 +21,13 @@ namespace DAnalytics.UTIL
 
         #region Conversions
 
+        public static double ToUnixTimestamp(this DateTime dateTime)
+        {
+            TimeSpan span = (dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime());
+
+            //return the total seconds (which is a UNIX timestamp)
+            return span.TotalMilliseconds;
+        }
         /// <summary>
         /// Convert to Int32
         /// </summary>
