@@ -33,7 +33,7 @@
             <br clear="all" />
         </div>
         <!-- // FOOTER WRAPPER STARTS HERE \\ -->
-        <div id="footer">&copy; 2013<strong> Geoesensys</strong>. Rights Reserved.<br clear="all" />
+        <div id="footer">&copy; 2014<strong> Geoesensys</strong>. Rights Reserved.<br clear="all" />
           </div>
         <!-- // FOOTER WRAPPER ENDS HERE \\ -->
         <div class="cls">
