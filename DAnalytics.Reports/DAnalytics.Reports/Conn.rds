@@ -3,7 +3,7 @@
   <Name>Conn</Name>
   <ConnectionProperties>
     <Extension>SQL</Extension>
-    <ConnectString>Data Source=JYOTHISRAJ-PC\JYOTHISSQLSERVER;Initial Catalog=HIRESYSTEM</ConnectString>
+    <ConnectString>Data Source=JYOTHISRAJ-PC\JYOTHISSQLSERVER;Initial Catalog=DataAnalytics</ConnectString>
   </ConnectionProperties>
   <DataSourceID>08c03f75-b29c-4598-9653-fa0a335fce4a</DataSourceID>
 </RptDataSource>

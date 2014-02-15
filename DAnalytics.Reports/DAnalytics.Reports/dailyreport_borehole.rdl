@@ -1227,6 +1227,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox50</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1262,6 +1265,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1296,6 +1302,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1330,6 +1339,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox5</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1364,6 +1376,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox27</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1398,6 +1413,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox31</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1432,6 +1450,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox35</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1466,6 +1487,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox39</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1500,6 +1524,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox43</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1534,6 +1561,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox47</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1568,6 +1598,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox51</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1602,6 +1635,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox55</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1636,6 +1672,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox59</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1675,6 +1714,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1729,6 +1771,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox4</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1783,6 +1828,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Depth</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1837,6 +1885,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox7</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1891,6 +1942,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>VOC1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1945,6 +1999,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>H2S1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1999,6 +2056,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>CO1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2053,6 +2113,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Borehole_Pressure1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2107,6 +2170,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Atmospheric_Pressure1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2161,6 +2227,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Pressure_Diff1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2215,6 +2284,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Battery1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2269,6 +2341,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Water_Level1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2323,6 +2398,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Temperature1</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2383,6 +2461,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2437,6 +2518,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox18</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2491,6 +2575,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2545,6 +2632,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox20</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2599,6 +2689,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>VOC2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2653,6 +2746,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>H2S2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2707,6 +2803,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>CO3</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2761,6 +2860,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Borehole_Pressure2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2815,6 +2917,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Atmospheric_Pressure2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2869,6 +2974,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Pressure_Diff2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2923,6 +3031,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Battery2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -2977,6 +3088,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Water_Level2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3031,6 +3145,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Temperature2</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3091,6 +3208,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox133</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3145,6 +3265,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox134</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3183,14 +3306,14 @@
                 <TablixCell />
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox136">
+                    <Textbox Name="Battery3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Min(Fields!Battery.Value)</Value>
                               <Style>
                                 <FontFamily>Century Gothic</FontFamily>
                                 <FontSize>8pt</FontSize>
@@ -3200,7 +3323,10 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox136</rd:DefaultName>
+                      <rd:DefaultName>Battery3</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3255,6 +3381,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox137</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3309,6 +3438,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox138</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3363,6 +3495,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox139</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3417,6 +3552,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox140</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3471,6 +3609,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox141</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3525,6 +3666,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox142</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3579,6 +3723,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox143</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3633,6 +3780,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox144</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -3687,6 +3837,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox145</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Parameters!ShowInternalAlert.Value = False</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -5450,6 +5603,10 @@
     <ReportParameter Name="DoAutoPick">
       <DataType>Boolean</DataType>
       <Prompt>Do Auto Pick</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ShowInternalAlert">
+      <DataType>Boolean</DataType>
+      <Prompt>ShowInternalAlert</Prompt>
     </ReportParameter>
   </ReportParameters>
   <Width>8.5in</Width>

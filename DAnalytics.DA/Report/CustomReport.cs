@@ -1,28 +1,37 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace DAnalytics.DA.Report
 {
     public class CustomReport
     {
+        static object _locker = new object();
+
         public static DataSet GetBoreholeReport(int BoreHoleID, DateTime? FromDate, DateTime? ToDate)
         {
-            DataSet _ds;
-            SqlParameter[] sqlParams = new SqlParameter[]{
-                UTIL.SqlHelper.CreateParameter("@BoreHoleID",BoreHoleID,SqlDbType.Int,ParameterDirection.Input),
-                UTIL.SqlHelper.CreateParameter("@FromDate",FromDate,SqlDbType.Date,ParameterDirection.Input),
-                UTIL.SqlHelper.CreateParameter("@ToDate",ToDate,SqlDbType.Date,ParameterDirection.Input)
-            };
-            try
+            lock (_locker)
             {
-                _ds = UTIL.SqlHelper.ExecuteDataset(UTIL.DAnalHelper.ConnectionString, CommandType.StoredProcedure, "usp_CustomReport_Get", sqlParams);
+                DataSet _ds;
+
+                List<SqlParameter> _sqlParams = new List<SqlParameter>();
+
+                _sqlParams.Add(UTIL.SqlHelper.CreateParameter("@BoreHoleID", BoreHoleID, SqlDbType.Int, ParameterDirection.Input));
+                if (FromDate.HasValue)
+                    _sqlParams.Add(UTIL.SqlHelper.CreateParameter("@FromDate", FromDate.Value, SqlDbType.Date, ParameterDirection.Input));
+                if (ToDate.HasValue)
+                    _sqlParams.Add(UTIL.SqlHelper.CreateParameter("@ToDate", ToDate.Value, SqlDbType.Date, ParameterDirection.Input));
+                try
+                {
+                    _ds = UTIL.SqlHelper.ExecuteDataset(UTIL.DAnalHelper.ConnectionString, CommandType.StoredProcedure, "usp_CustomReport_Get", _sqlParams.ToArray());
+                }
+                finally
+                {
+                    _sqlParams = null;
+                }
+                return _ds;
             }
-            finally
-            {
-                sqlParams = null;
-            }
-            return _ds;
         }
 
 
